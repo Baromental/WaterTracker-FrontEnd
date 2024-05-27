@@ -1,0 +1,31 @@
+@import './main.css';
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Regular.ttf') format('ttf'),
+    url('../fonts/Roboto/Roboto-Medium.ttf') format('ttf'),
+    url('../fonts/Roboto/Roboto-Bold.ttf') format('ttf');
+}
+
+:root {
+  --font-family: 'Roboto';
+  --primarily-font-size: 16px;
+  --secondary-font-size: 18px;
+  --primarily-line-height: 20px;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --black-color: #2F2F2F;
+  --white-color: #FFFFFF;
+  --blue-color: #407BFF;
+}
+
+body {
+  font-family: var(--font-family), sans-serif;
+  font-weight: var(--font-weight-regular);
+  background-color: #ffffff;
+
+  @media screen and (min-width: 768px) {
+    overflow: hidden;
+  }
+}
