@@ -1,0 +1,44 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.userAuthButton{
+    display: flex;
+    gap: 8px;
+    height: 28px;
+    color: var(--blue-color);
+    background-color: transparent;
+    border: none;
+
+}
+
+@media screen and (max-width: 768px) {
+    .header{
+        padding: 8px 20px 0px 20px;
+    }
+
+    .userAuthButton{
+        font-size: var(--primarily-font-size);
+        line-height: 20px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .header{
+        padding: 16px 34px 0px 32px;
+    }
+
+    .userAuthButton{
+        font-size: var(--secondary-font-size);
+        line-height: 24px;
+    }  
+}
+
+@media screen and (min-width: 1440px) {
+    .header{
+        padding: 12px 112px 0px 112px;
+    } 
+}
