@@ -1,4 +1,5 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import s from './Header.module.css';
 import sprite from '../../img/icons/sprite.svg'
 import logo from '../../img/logo.png'
@@ -21,6 +22,7 @@ const Header = () => {
           </svg>
         </button> */}
         </div>
+        <Outlet />
       </header>
     );
   };
