@@ -1,0 +1,116 @@
+.today_section {
+    max-width: 264px;
+    background-color: #ecf2ff;
+    height: 258px;
+
+    @media screen and (min-width:768px) {
+        max-width: 656px;
+    }
+
+    @media screen and (min-width:1440px) {
+        max-width: 544px;
+    }
+}
+
+.section_title {
+    font-weight: var(--font-weight-medium);
+    font-size: 24px;
+    line-height: 1.25;
+    color: var(--black-color);
+    margin-bottom: 16px;
+
+    @media screen and (min-width: 768px) {
+        font-size: 26px;
+        line-height: 1.23077;
+    }
+}
+
+.list {
+    height: 180px;
+    max-width: 254px;
+
+    @media screen and (min-width:768px) {
+        max-width: 646px;
+    }
+
+    @media screen and (min-width:1440px) {
+        max-width: 534px;
+    }
+
+}
+
+.custom_scroll_container {
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.icon_plus {
+    padding: 4px;
+    height: 10px;
+    width: 10px;
+    fill: #407bff;
+    transition: fill 0.3s ease-in-out;
+
+    @media screen and (min-width: 768px) {
+        padding: 6px;
+        height: 14px;
+        width: 14px;
+    }
+
+}
+
+
+
+.add_btn {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #407bff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease-in-out;
+
+    &&:hover {
+        color: #ff9d43;
+    }
+}
+
+.add_btn:hover .icon_plus {
+    fill: #ff9d43;
+}
+
+
+.rcs_inner_handle {
+    background-color: #9ebbff !important;
+    border-radius: 8px;
+    position: relative;
+    width: 4px;
+    right: -3px;
+}
+
+
+.custom_scroll_container::after {
+    content: '';
+    position: absolute;
+    right: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 90%;
+    background-color: #d7e3ff;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.custom_scroll_container:hover::after {
+    opacity: 1;
+}
+
+.custom_scroll_container.rcs_native-scroll::after {
+    opacity: 0;
+}
