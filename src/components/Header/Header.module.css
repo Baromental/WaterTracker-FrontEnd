@@ -7,12 +7,22 @@
 
 .userAuthButton{
     display: flex;
+    align-items: center;
     gap: 8px;
     height: 28px;
     color: var(--blue-color);
     background-color: transparent;
     border: none;
 
+}
+
+.iconUser{
+    fill:none;
+    stroke: var(--black-color);
+}
+
+.iconDown{
+    fill: var(--blue-color);
 }
 
 @media screen and (max-width: 768px) {

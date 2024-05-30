@@ -1,9 +1,9 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import s from './WelcomePage.module.css';
-import sprite from '../../img/icons/sprite.svg'
+import sprite from '../../img/icons/sprite.svg';
 
-
-const Header = () => {
+const WelcomePage = () => {
     return (
         <section className={s.welcomePageSection}>
             <h1 className={s.title}>Water consumption tracker</h1>
@@ -11,28 +11,31 @@ const Header = () => {
                 <div className={s.buttonContainer}>
                     <h2 className={s.subtitle}>Record daily water intake and track</h2>
                     <div>
-                    <span className={s.listButtonTitle}>Tracker Benefits</span>
-                    <ul className={s.listButton}>
-                        <li className={s.itemListButton}> 
-                            {/* <svg>
-                                <use width="28" height="28" href={`${sprite}#icon-calendar`} />
-                            </svg> */}
-                            Habit drive</li>
-                        <li className={s.itemListButton}> 
-                            {/* <svg>
-                                <use width="28" height="28" href={`${sprite}#icon-analytics`} />
-                            </svg> */}
-                        View statistics</li>
-                        <li className={s.itemListButton}> 
-                            {/* <svg>
-                                <use width="28" height="28" href={`${sprite}#icon-screw`} />
-                            </svg> */}
-                        Personal rate setting</li>
-                    </ul>
+                        <span className={s.listButtonTitle}>Tracker Benefits</span>
+                        <ul className={s.listButton}>
+                            <li className={s.itemListButton}>
+                                <svg width="40" height="40">
+                                    <use  href={`${sprite}#icon-calendar`} />
+                                </svg>
+                                Habit drive
+                            </li>
+                            <li className={s.itemListButton}>
+                                <svg width="40" height="40">
+                                    <use  href={`${sprite}#icon-analytics`} />
+                                </svg>
+                                View statistics
+                            </li>
+                            <li className={s.itemListButton}>
+                                <svg width="40" height="40">
+                                    <use href={`${sprite}#icon-screw`} />
+                                </svg>
+                                Personal rate setting
+                            </li>
+                        </ul>
                     </div>
-                    <button className={s.button}>Try tracker</button>
+                    <NavLink to="/signup" className={s.button}>Try tracker</NavLink>
                 </div>
-                <div>
+                <div className={s.listContainer}>
                     <ul className={s.list}>
                         <span className={s.listTitle}>Why drink water</span>
                         <li className={s.itemList}>Supply of nutrients to all organs</li>
@@ -46,8 +49,7 @@ const Header = () => {
                 </div>
             </div>
         </section>
-      
     );
-  };
+};
 
-export default Header;
+export default WelcomePage;

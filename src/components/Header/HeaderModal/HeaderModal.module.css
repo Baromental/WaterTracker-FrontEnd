@@ -1,0 +1,30 @@
+.menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.menuItem {
+    padding: 10px 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menuItem:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.icon {
+    fill: none;
+    stroke: var(--blue-color);
+}
