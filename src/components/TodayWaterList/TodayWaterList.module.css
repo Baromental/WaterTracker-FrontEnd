@@ -45,21 +45,18 @@
 }
 
 .icon_plus {
-    padding: 4px;
     height: 10px;
     width: 10px;
     fill: #407bff;
     transition: fill 0.3s ease-in-out;
+    box-sizing: content-box;
 
     @media screen and (min-width: 768px) {
-        padding: 6px;
         height: 14px;
         width: 14px;
     }
 
 }
-
-
 
 .add_btn {
     padding: 0;

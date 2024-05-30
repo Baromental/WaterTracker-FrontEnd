@@ -34,7 +34,6 @@
 .icon_pen {
     width: 16px;
     height: 16px;
-    padding: 2px;
     stroke-width: 1px;
     stroke: #9ebbff;
     fill: none;
@@ -50,7 +49,6 @@
 .icon_trash {
     width: 16px;
     height: 16px;
-    padding: 2px;
     stroke-width: 1px;
     stroke: #ef5050;
     fill: none;

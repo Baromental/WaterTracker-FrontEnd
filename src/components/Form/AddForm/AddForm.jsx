@@ -4,6 +4,7 @@ import { AmountOfWater } from '../Inputs/AmountOfWater/AmountOfWater';
 import RecordingTime from '../Inputs/RecordingTime/RecordingTime';
 import ValueOfTheWater from '../Inputs/ValueOfTheWater/ValueOfTheWater';
 import { AmountDisplay } from '../AmountDisplay/AmountDisplay';
+import s from './AddForm.module.css';
 
 const AddForm = () => {
   const methods = useForm({
@@ -21,12 +22,18 @@ const AddForm = () => {
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)}>
-        <AmountOfWater />
-        <RecordingTime />
-        <ValueOfTheWater />
-        <div>
+        <h2 className={s.form_title}>Add water</h2>
+        <p className={s.text_under_title}>Choose a value:</p>
+        <div className={s.inputs_wrapper}>
+          <AmountOfWater />
+          <RecordingTime />
+          <ValueOfTheWater />
+        </div>
+        <div className={s.btn_wrapper}>
           <AmountDisplay />
-          <button type="submit">Save</button>
+          <button type="submit" className={s.btn}>
+            Save
+          </button>
         </div>
       </form>
     </FormProvider>
