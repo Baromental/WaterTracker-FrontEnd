@@ -5,10 +5,18 @@ import { Link } from 'react-router-dom';
 import s from './AuthForm.module.css';
 
 export const AuthForm = ({ formType, onSubmit }) => {
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const submit = data => {
-    onSubmit(data);
+    const { repeatPassword, ...signupData } = data;
+    console.log(data);
+    onSubmit(signupData);
+    console.log(data);
     reset();
   };
 

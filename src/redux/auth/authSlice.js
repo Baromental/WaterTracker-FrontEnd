@@ -1,12 +1,7 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-import {
-  loginThunk,
-  logoutThunk,
-  refreshThunk,
-  registerThunk,
-} from './operations';
+import { loginThunk, logoutThunk, registerThunk } from './operations';
 
 const initialState = {
   user: {
@@ -43,15 +38,6 @@ const slice = createSlice({
       .addCase(logoutThunk.fulfilled, state => {
         return initialState;
       })
-      .addCase(refreshThunk.fulfilled, (state, { payload }) => {
-        state.user.username = payload.username;
-        state.user.email = payload.email;
-        state.balance = payload.balance;
-        state.isLoggedIn = true;
-        state.loading = false;
-        state.isRefresh = false;
-        state.loading = false;
-      })
       .addCase(loginThunk.rejected, (state, { payload }) => {
         state.error = payload;
         state.loading = false;
@@ -63,11 +49,6 @@ const slice = createSlice({
         state.loading = false;
         state.isRefresh = false;
         toast.error(payload);
-      })
-      .addCase(refreshThunk.rejected, (state, { payload }) => {
-        state.error = payload;
-        state.loading = false;
-        state.isRefresh = false;
       })
       .addMatcher(
         isAnyOf(registerThunk.fulfilled, loginThunk.fulfilled),
@@ -83,24 +64,13 @@ const slice = createSlice({
           toast.success(`Welcome, ${payload.username}`);
         }
       )
+      .addMatcher(isAnyOf(registerThunk.pending, loginThunk.pending), state => {
+        state.loading = true;
+        state.error = null;
+        state.isRefresh = true;
+      })
       .addMatcher(
-        isAnyOf(
-          registerThunk.pending,
-          loginThunk.pending,
-          refreshThunk.pending
-        ),
-        state => {
-          state.loading = true;
-          state.error = null;
-          state.isRefresh = true;
-        }
-      )
-      .addMatcher(
-        isAnyOf(
-          registerThunk.rejected,
-          loginThunk.rejected,
-          refreshThunk.rejected
-        ),
+        isAnyOf(registerThunk.rejected, loginThunk.rejected),
         (state, { payload }) => {
           state.error = payload;
           state.loading = false;
