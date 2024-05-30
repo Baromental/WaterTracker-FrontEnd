@@ -31,6 +31,26 @@
     color: var(--black-color);
 }
 
+.icon_pen_wrapper {
+    padding: 2px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease-in-out;
+
+    &&:hover {
+        border-color: #9ebbff;
+    }
+}
+
+.icon_trash_wrapper {
+    padding: 2px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease-in-out;
+
+    &&:hover {
+        border-color: #ef5050;
+    }
+}
+
 .icon_pen {
     width: 16px;
     height: 16px;
@@ -38,12 +58,6 @@
     stroke: #9ebbff;
     fill: none;
     cursor: pointer;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.3s ease-in-out;
-
-    &&:hover {
-        border-color: #9ebbff;
-    }
 }
 
 .icon_trash {
@@ -53,10 +67,5 @@
     stroke: #ef5050;
     fill: none;
     cursor: pointer;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.3s ease-in-out;
 
-    &&:hover {
-        border-color: #ef5050;
-    }
 }

@@ -12,12 +12,16 @@ const TodayWaterItem = () => {
         <p className={s.time}>14:00 PM</p>
       </div>
       <div className={s.wrapper_align_right}>
-        <svg className={s.icon_pen}>
-          <use xlinkHref={`${svg}#icon-pen`} />
-        </svg>
-        <svg className={s.icon_trash}>
-          <use xlinkHref={`${svg}#icon-trash`} />
-        </svg>
+        <div className={s.icon_pen_wrapper}>
+          <svg className={s.icon_pen}>
+            <use xlinkHref={`${svg}#icon-pen`} />
+          </svg>
+        </div>
+        <div className={s.icon_trash_wrapper}>
+          <svg className={s.icon_trash}>
+            <use xlinkHref={`${svg}#icon-trash`} />
+          </svg>
+        </div>
       </div>
     </li>
   );

@@ -7,6 +7,7 @@ import SignupPage from '../pages/SignupSigninPage/SignupPage';
 import SigninPage from '../pages/SignupSigninPage/SigninPage';
 
 import 'modern-normalize';
+import MainPage from '../pages/MainPage/MainPage';
 
 const App = () => {
   return (
@@ -16,7 +17,8 @@ const App = () => {
         <Route path="/signin" element={<SigninPage />} />
 
         <Route path="/" element={<Header />}>
-          <Route index element={<WelcomePage />}></Route>
+          <Route index element={<WelcomePage />} />
+          <Route path="water-tracker" element={<MainPage />} />
         </Route>
       </Routes>
     </div>
