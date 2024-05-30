@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const walletApi = axios.create({
+export const authApi = axios.create({
   baseURL: 'http://localhost:3000/api/',
 });
 
