@@ -1,14 +1,23 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+
 import Header from './Header/Header';
-import TodayWaterList from './TodayWaterList/TodayWaterList';
+import WelcomePage from '../pages/WelcomePage/WelcomePage';
+import SignupPage from '../pages/SignupSigninPage/SignupPage';
+import SigninPage from '../pages/SignupSigninPage/SigninPage';
+
+import 'modern-normalize';
 
 const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Header />}></Route>
-        <Route path="/water" element={<TodayWaterList />}></Route>
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/signin" element={<SigninPage />} />
+
+        <Route path="/" element={<Header />}>
+          <Route index element={<WelcomePage />}></Route>
+        </Route>
       </Routes>
     </div>
   );
