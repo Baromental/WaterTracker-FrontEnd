@@ -10,12 +10,13 @@ const AddForm = () => {
   const methods = useForm({
     defaultValues: {
       amount: 0,
-      time: null,
+      date: null,
     },
   });
 
   const onSubmit = data => {
     data.amount = data.amount || 0;
+    data.date = data.date.toString();
     console.log(data);
   };
 

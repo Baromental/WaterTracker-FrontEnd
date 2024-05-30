@@ -9,7 +9,7 @@ const RecordingTime = () => {
 
   return (
     <Controller
-      name="time"
+      name="date"
       control={control}
       render={({ field }) => (
         <div className={s.wrapper}>
