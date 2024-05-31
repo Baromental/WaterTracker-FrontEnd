@@ -4,25 +4,23 @@ import { toast } from 'react-toastify';
 import { loginThunk, logoutThunk, registerThunk } from './operations';
 
 const initialState = {
-  user: {
-    username: '',
-    email: '',
-  },
+  username: '',
+  email: '',
   token: null,
   loading: false,
   error: false,
   isLoggedIn: false,
   isRefresh: false,
-  balance: 0,
 };
 
 const slice = createSlice({
   name: 'auth',
   initialState,
   selectors: {
-    selectUser: state => state.user,
+    selectUsername: state => state.username,
+    selectEmail: state => state.email,
     selectIsLoggedIn: state => state.isLoggedIn,
-    selectToken: state => state.isLoggedIn,
+    selectToken: state => state.token,
     selectIsRefresh: state => state.isRefresh,
     selectBalance: state => state.balance,
     selectIsLoading: state => state.loading,
@@ -53,6 +51,7 @@ const slice = createSlice({
       .addMatcher(
         isAnyOf(registerThunk.fulfilled, loginThunk.fulfilled),
         (state, { payload }) => {
+          console.log(payload);
           state.username = payload.username;
           state.email = payload.email;
           state.password = payload.password;
@@ -83,10 +82,10 @@ const slice = createSlice({
 export const authReducer = slice.reducer;
 export const {
   selectIsLoggedIn,
-  selectUser,
+  selectUsername,
+  selectEmail,
   selectToken,
   selectIsRefresh,
-  selectBalance,
   selectIsLoading,
 } = slice.selectors;
 export const { logout } = slice.actions;

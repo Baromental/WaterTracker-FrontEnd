@@ -5,7 +5,7 @@ export const registerThunk = createAsyncThunk(
   'register',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await authApi.post('users/register', credentials);
+      const { data } = await authApi.post('auth/register', credentials);
       setToken(data.token);
       return data;
     } catch (error) {
@@ -18,7 +18,7 @@ export const loginThunk = createAsyncThunk(
   'login',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await authApi.post('users/login', credentials);
+      const { data } = await authApi.post('auth/login', credentials);
       console.log(data);
       setToken(data.token);
       return data;
@@ -30,7 +30,7 @@ export const loginThunk = createAsyncThunk(
 
 export const logoutThunk = createAsyncThunk('logout', async (_, thunkAPI) => {
   try {
-    const { data } = await authApi.delete('users/logout');
+    const { data } = await authApi.delete('auth/logout');
     removeToken();
     return data;
   } catch (error) {
