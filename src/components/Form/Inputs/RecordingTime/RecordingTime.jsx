@@ -3,6 +3,7 @@ import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Controller, useFormContext } from 'react-hook-form';
 import s from './RecordingTime.module.css';
+import './reactDatepicker.css';
 
 const RecordingTime = () => {
   const { control } = useFormContext();
@@ -18,7 +19,7 @@ const RecordingTime = () => {
           </label>
           <ReactDatePicker
             id="time"
-            selected={field.value || new Date()}
+            selected={field.value}
             onChange={date => {
               field.onChange(date);
             }}

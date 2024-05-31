@@ -2,8 +2,13 @@ import React from 'react';
 import svg from '../../../img/icons/sprite.svg';
 import glass from '../../../img/images/glass.svg';
 import s from './TodayWaterItem.module.css';
+import { useModal } from '../../../hooks/useModal';
+import Modal from '../../Modal/Modal';
+import Form from '../../Form/AddAndEditForm/Form';
 
 const TodayWaterItem = () => {
+  const { isOpen, toggle } = useModal();
+
   return (
     <li className={s.list_item}>
       <div className={s.wrapper_align_left}>
@@ -12,17 +17,22 @@ const TodayWaterItem = () => {
         <p className={s.time}>14:00 PM</p>
       </div>
       <div className={s.wrapper_align_right}>
-        <div className={s.icon_pen_wrapper}>
+        <button className={s.icon_pen_wrapper} onClick={toggle}>
           <svg className={s.icon_pen}>
             <use xlinkHref={`${svg}#icon-pen`} />
           </svg>
-        </div>
-        <div className={s.icon_trash_wrapper}>
+        </button>
+        <button className={s.icon_trash_wrapper}>
           <svg className={s.icon_trash}>
             <use xlinkHref={`${svg}#icon-trash`} />
           </svg>
-        </div>
+        </button>
       </div>
+      {isOpen && (
+        <Modal closeModal={toggle}>
+          <Form type="edit" amount={0} date={new Date()} />
+        </Modal>
+      )}
     </li>
   );
 };

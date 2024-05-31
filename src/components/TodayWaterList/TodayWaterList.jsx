@@ -5,7 +5,7 @@ import s from './TodayWaterList.module.css';
 import { FiPlus } from 'react-icons/fi';
 import { CustomScroll } from 'react-custom-scroll';
 import Modal from '../Modal/Modal';
-import AddForm from '../Form/AddForm/AddForm';
+import Form from '../Form/AddAndEditForm/Form';
 
 const TodayWaterList = () => {
   const { isOpen, toggle } = useModal();
@@ -31,7 +31,7 @@ const TodayWaterList = () => {
       </button>
       {isOpen && (
         <Modal closeModal={toggle}>
-          <AddForm />
+          <Form type="add" amount={0} date={new Date()} />
         </Modal>
       )}
     </section>
