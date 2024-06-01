@@ -27,7 +27,7 @@ const RecordingTime = () => {
             showTimeSelectOnly
             timeIntervals={5}
             timeCaption="Time"
-            dateFormat="h:mm aa"
+            dateFormat="H:mm aa"
             className={s.datepicker}
             wrapperClassName={s.wrapper_datepicker}
           />
