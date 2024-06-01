@@ -1,14 +1,25 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-import { loginThunk, logoutThunk, registerThunk } from './operations';
+import {
+  loginThunk,
+  logoutThunk,
+  refreshThunk,
+  registerThunk,
+  updateAvatarThunk,
+  updateUserThunk,
+} from './operations';
 
 const initialState = {
-  username: '',
+  name: '',
   email: '',
+  password: '',
+  gender: '',
+  waterRate: 1.5,
+  avatarURL: '',
   token: null,
   loading: false,
-  error: false,
+  error: null,
   isLoggedIn: false,
   isRefresh: false,
 };
@@ -17,12 +28,14 @@ const slice = createSlice({
   name: 'auth',
   initialState,
   selectors: {
-    selectUsername: state => state.username,
+    selectName: state => state.name,
+    selectGender: state => state.gender,
     selectEmail: state => state.email,
+    selectWaterRate: state => state.waterRate,
+    selectAvatarURL: state => state.avatarURL,
     selectIsLoggedIn: state => state.isLoggedIn,
     selectToken: state => state.token,
     selectIsRefresh: state => state.isRefresh,
-    selectBalance: state => state.balance,
     selectIsLoading: state => state.loading,
   },
   reducers: {
@@ -32,48 +45,88 @@ const slice = createSlice({
   },
   extraReducers: builder => {
     builder
-
+      .addCase(refreshThunk.fulfilled, (state, { payload }) => {
+        state.name = payload.name;
+        state.email = payload.email;
+        state.password = payload.password;
+        state.gender = payload.gender;
+        state.waterRate = payload.waterRate;
+        state.avatarURL = payload.avatarURL;
+        state.token = payload.token;
+        state.loading = false;
+        state.isLoggedIn = true;
+        state.loading = false;
+        state.isRefresh = false;
+      })
       .addCase(logoutThunk.fulfilled, state => {
         return initialState;
       })
-      .addCase(loginThunk.rejected, (state, { payload }) => {
-        state.error = payload;
+      // .addCase(registerThunk.rejected, (state, { payload }) => {
+      //   state.error = payload;
+      //   state.loading = false;
+      //   state.isRefresh = false;
+      //   toast.error(payload);
+      // })
+      // .addCase(loginThunk.rejected, (state, { payload }) => {
+      //   state.error = payload;
+      //   state.loading = false;
+      //   state.isRefresh = false;
+      //   toast.error(payload);
+      // })
+      .addCase(updateAvatarThunk.fulfilled, (state, { payload }) => {
+        state.avatarURL = payload.avatarURL;
         state.loading = false;
         state.isRefresh = false;
-        toast.error(payload);
-      })
-      .addCase(registerThunk.rejected, (state, { payload }) => {
-        state.error = payload;
-        state.loading = false;
-        state.isRefresh = false;
-        toast.error(payload);
+        toast.success(`The avatar has been downloaded successfully`);
       })
       .addMatcher(
-        isAnyOf(registerThunk.fulfilled, loginThunk.fulfilled),
+        isAnyOf(
+          registerThunk.fulfilled,
+          loginThunk.fulfilled,
+          updateUserThunk.fulfilled
+        ),
         (state, { payload }) => {
-          console.log(payload);
-          state.username = payload.username;
+          state.name = payload.name;
           state.email = payload.email;
           state.password = payload.password;
+          state.gender = payload.gender;
+          state.waterRate = payload.waterRate;
+          state.avatarURL = payload.avatarURL;
           state.token = payload.token;
           state.loading = false;
           state.isLoggedIn = true;
           state.loading = false;
           state.isRefresh = false;
-          toast.success(`Welcome, ${payload.username}`);
+          toast.success(`Welcome, ${payload.name}`);
         }
       )
-      .addMatcher(isAnyOf(registerThunk.pending, loginThunk.pending), state => {
-        state.loading = true;
-        state.error = null;
-        state.isRefresh = true;
-      })
       .addMatcher(
-        isAnyOf(registerThunk.rejected, loginThunk.rejected),
+        isAnyOf(
+          registerThunk.pending,
+          loginThunk.pending,
+          refreshThunk.pending,
+          updateUserThunk.pending,
+          updateAvatarThunk.pending
+        ),
+        state => {
+          state.loading = true;
+          state.error = null;
+          state.isRefresh = true;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          registerThunk.rejected,
+          loginThunk.rejected,
+          refreshThunk.rejected,
+          updateUserThunk.rejected,
+          updateAvatarThunk.rejected
+        ),
         (state, { payload }) => {
           state.error = payload;
           state.loading = false;
           state.isRefresh = false;
+          toast.error(payload);
         }
       );
   },
@@ -81,9 +134,12 @@ const slice = createSlice({
 
 export const authReducer = slice.reducer;
 export const {
-  selectIsLoggedIn,
-  selectUsername,
+  selectName,
+  selectGender,
   selectEmail,
+  selectWaterRate,
+  selectAvatarURL,
+  selectIsLoggedIn,
   selectToken,
   selectIsRefresh,
   selectIsLoading,
