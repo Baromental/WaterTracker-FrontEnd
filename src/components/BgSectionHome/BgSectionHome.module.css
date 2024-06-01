@@ -1,0 +1,15 @@
+.section {
+  position: relative;
+  height: calc(100vh - 60px);
+  background-image: url('../../img/images/Background-element-main-page.png'),
+    url('../../img/images/Bottle-home-screen-pc.png');
+  background-size: auto, 44%;
+  background-position: bottom 0px center, bottom 170px left 40px;
+  background-repeat: no-repeat;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 20px 20px 736px;
+}
