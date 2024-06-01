@@ -5,14 +5,13 @@ import s from './TodayWaterList.module.css';
 import { FiPlus } from 'react-icons/fi';
 import { CustomScroll } from 'react-custom-scroll';
 import Modal from '../Modal/Modal';
-import AddForm from '../Form/AddForm/AddForm';
+import Form from '../Form/AddAndEditForm/Form';
+import { useSelector } from 'react-redux';
+import { selectNotes } from '../../redux/water/waterSlice';
 
 const TodayWaterList = () => {
   const { isOpen, toggle } = useModal();
-
-  const items = Array.from({ length: 5 }, (_, index) => (
-    <WaterTodayItem key={index} />
-  ));
+  const notes = useSelector(selectNotes);
 
   return (
     <section className={s.today_section}>
@@ -22,7 +21,13 @@ const TodayWaterList = () => {
           heightRelativeToParent="100%"
           handleClass={s.rcs_inner_handle}
         >
-          <ul className={s.list}>{items}</ul>
+          {notes.length > 0 && (
+            <ul className={s.list}>
+              {notes.map(note => (
+                <WaterTodayItem key={note._id} note={note} />
+              ))}
+            </ul>
+          )}
         </CustomScroll>
       </div>
       <button className={s.add_btn} onClick={toggle}>
@@ -31,7 +36,7 @@ const TodayWaterList = () => {
       </button>
       {isOpen && (
         <Modal closeModal={toggle}>
-          <AddForm />
+          <Form type="add" amount={0} date={new Date()} closeModal={toggle} />
         </Modal>
       )}
     </section>

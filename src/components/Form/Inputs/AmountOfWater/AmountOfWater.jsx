@@ -26,7 +26,7 @@ export const AmountOfWater = () => {
             </button>
             <div className={s.input_container}>
               <div className={s.input} id="amount-water">
-                {field.value}ml
+                {field.value || 0}ml
               </div>
             </div>
             <button

@@ -15,9 +15,11 @@
   "author": "BC67",
   "license": "ISC",
   "dependencies": {
+    "@hookform/resolvers": "^3.4.2",
     "@reduxjs/toolkit": "^2.2.5",
     "axios": "^1.7.2",
     "modern-normalize": "^2.0.0",
+    "moment": "^2.30.1",
     "react": "^18.3.1",
     "react-custom-scroll": "^7.0.0",
     "react-datepicker": "^6.9.0",

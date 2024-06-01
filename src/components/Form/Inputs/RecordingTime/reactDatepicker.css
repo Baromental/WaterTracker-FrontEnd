@@ -1,0 +1,27 @@
+.react-datepicker {
+    border: 1px solid #407bff;
+
+}
+
+.react-datepicker__header {
+    background-color: #407bff;
+    border-bottom: 1px solid #ecf2ff;
+}
+
+.react-datepicker-time__header {
+    color: #fff;
+}
+
+.react-datepicker__time-list {
+    background-color: #ecf2ff;
+    color: #2f2f2f;
+}
+
+.react-datepicker__triangle {
+    stroke: #407bff !important;
+    fill: #407bff !important;
+}
+
+.react-datepicker__time-list-item--selected {
+    background-color: #407bff !important;
+}
