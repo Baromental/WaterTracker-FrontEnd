@@ -21,7 +21,7 @@ export const AuthForm = ({ formType, onSubmit }) => {
   };
 
   return (
-    <div className={s.authForm}>
+    <>
       <h1 className={s.title}>
         {formType === 'register' ? 'Sign Up' : 'Sign In'}
       </h1>
@@ -85,6 +85,6 @@ export const AuthForm = ({ formType, onSubmit }) => {
           </Link>
         )}
       </form>
-    </div>
+    </>
   );
 };

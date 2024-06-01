@@ -22,7 +22,6 @@ const initialState = {
   error: null,
   isLoggedIn: false,
   isRefresh: false,
-  balance: 0,
 };
 
 const slice = createSlice({
