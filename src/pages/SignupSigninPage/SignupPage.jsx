@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { registerThunk } from '../../redux/auth/operations';
 import { AuthForm } from '../../components/AuthForm/AuthForm';
+import { BgSection } from '../../components/BgSection/BgSection';
 // import { registerSchema } from '../../Schemas/registerShema';
 
 const SignupPage = () => {
@@ -13,13 +14,13 @@ const SignupPage = () => {
     dispatch(registerThunk(data));
   };
   return (
-    <div>
+    <BgSection>
       <AuthForm
         onSubmit={handleSubmit}
         formType={'register'}
         // schema={registerSchema}
       />
-    </div>
+    </BgSection>
   );
 };
 
