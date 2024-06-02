@@ -106,14 +106,11 @@ const Form = ({ type, amount, date, id, closeModal }) => {
         <div className={s.btn_wrapper}>
           {type !== 'delete' && <AmountDisplay />}
           {type === 'delete' && (
-            <Button type="button" className={'cancel'} closeModal={closeModal}>
+            <Button type="button" className={'cancel'} onClick={closeModal}>
               Cancel
             </Button>
           )}
-          <Button
-            type="submit"
-            className={type === 'delete' ? 'delete' : 'save'}
-          >
+          <Button type="submit" className={type === 'delete' ? 'red' : 'blue'}>
             {type === 'delete' ? 'Delete' : 'Save'}
           </Button>
         </div>
