@@ -25,11 +25,11 @@
     }
 }
 
-.save {
+.blue {
     background: #407bff;
 }
 
-.delete {
+.red {
     background-color: #ef5050;
 }
 
@@ -46,5 +46,27 @@
 
     @media screen and (max-width:768px) {
         order: 2;
+    }
+}
+
+.add {
+    background: #407bff;
+    width: 100%;
+    display: flex;
+    gap: 13px;
+    padding: 6px 76px;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (min-width:768px) {
+        width: 336px;
+        height: 44px;
+        padding: 10px 104px;
+        gap: 10px;
+    }
+
+    @media screen and (min-width:1440px) {
+        width: 178px;
+        padding: 10px 30px;
     }
 }

@@ -17,6 +17,7 @@ const slice = createSlice({
   initialState,
   selectors: {
     selectNotes: state => state.notes,
+    selectPercent: state => state.percent,
   },
   extraReducers: builder => {
     builder
@@ -38,4 +39,4 @@ const slice = createSlice({
 });
 
 export const waterReducer = slice.reducer;
-export const { selectNotes } = slice.selectors;
+export const { selectNotes, selectPercent } = slice.selectors;

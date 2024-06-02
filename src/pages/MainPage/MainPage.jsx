@@ -3,6 +3,9 @@ import TodayWaterList from '../../components/TodayWaterList/TodayWaterList';
 import { BgSectionHome } from '../../components/BgSectionHome/BgSectionHome';
 import { useDispatch } from 'react-redux';
 import { fetchWaterDataTodayThunk } from '../../redux/water/operations';
+import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
+import s from './MainPage.module.css';
+import DailyNorma from '../../components/DailyNorma/DailyNorma';
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -13,9 +16,15 @@ const MainPage = () => {
 
   return (
     <BgSectionHome>
-      <TodayWaterList />
+      <div className={s.bottle_wrapper}>
+        <DailyNorma />
+        <WaterRatioPanel />
+      </div>
+      <div className={s.today_wrapper}>
+        <TodayWaterList />
+      </div>
     </BgSectionHome>
-  );  
+  );
 };
 
 export default MainPage;

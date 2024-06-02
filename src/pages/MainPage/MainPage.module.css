@@ -1,0 +1,31 @@
+.today_wrapper {
+    border-radius: 10px;
+    padding: 24px 8px;
+    box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
+    background-color: #ecf2ff;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+
+    @media screen and (min-width:1440px) {
+        width: 592px;
+        height: 680px;
+        margin-left: auto;
+    }
+}
+
+.bottle_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 232px;
+
+    @media screen and (min-width:768px) {
+        gap: 326px
+    }
+
+    @media screen and (min-width:1440px) {
+        padding-top: 30px;
+        gap: 466px
+    }
+}

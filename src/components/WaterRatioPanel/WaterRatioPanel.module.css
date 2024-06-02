@@ -1,0 +1,133 @@
+.water_ratio_section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0 auto;
+    width: 100%;
+
+    @media screen and (min-width:768px) {
+        flex-direction: row;
+        align-items: center;
+        gap: 32px;
+    }
+
+    @media screen and (min-width:1440px) {
+        gap: 23px;
+    }
+}
+
+.section_title {
+    font-size: 18px;
+    line-height: 1.33333;
+    color: #407bff;
+    margin-bottom: 8px;
+}
+
+.top_section_wrapper {
+    @media screen and (min-width:768px) {
+        width: 356px;
+    }
+
+    @media screen and (min-width:1440px) {
+        width: 391px;
+    }
+
+}
+
+.progress_bar_wrapper {
+    margin: 0 auto;
+    width: 256px;
+    height: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-left: auto;
+
+    @media screen and (min-width:768px) {
+        width: 325px;
+    }
+
+    @media screen and (min-width:1440px) {
+        width: 360px;
+    }
+}
+
+.progress_bar {
+    width: 100%;
+    height: 8px;
+    background: #d7e3ff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: #9ebbff;
+    width: 0;
+    transition: width 0.5s;
+}
+
+.circle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+    background-color: #fff;
+    border: 1px solid #407bff;
+}
+
+.marks_wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 256px;
+    margin: 0 auto;
+}
+
+.marks_label_wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+    margin: 0 auto;
+}
+
+.mark_label {
+    font-size: 12px;
+    line-height: 1.33333;
+    color: #407bff;
+    margin-top: 4px;
+}
+
+.mark_label_middle {
+    font-weight: 500;
+    line-height: 1.25;
+    text-align: center;
+    color: #407bff;
+}
+
+.mark {
+    border: 1px solid #d7e3ff;
+    height: 8px;
+    width: 0px;
+}
+
+.icon_ellipse {
+    width: 14px;
+    height: 14px;
+}
+
+.icon_plus_circle {
+    stroke-width: 2px;
+    stroke: #fff;
+    fill: none;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.btn_name {
+    text-align: left;
+    flex: 1;
+}

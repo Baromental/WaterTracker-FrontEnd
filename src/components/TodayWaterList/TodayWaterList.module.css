@@ -2,6 +2,8 @@
     max-width: 264px;
     background-color: #ecf2ff;
     height: 258px;
+    width: 100%;
+    margin: 0 auto;
 
     @media screen and (min-width:768px) {
         max-width: 656px;
@@ -42,7 +44,26 @@
 .custom_scroll_container {
     margin-bottom: 12px;
     position: relative;
+    overflow: overlay;
 }
+
+.custom_scroll_container::before {
+    content: '';
+    position: absolute;
+    right: 3px;
+    top: 5px;
+    bottom: 5px;
+    width: 2px;
+    background-color: #d7e3ff;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.custom_scroll_container:hover::before {
+    opacity: 1;
+}
+
 
 .icon_plus {
     height: 10px;
@@ -87,11 +108,10 @@
     position: relative;
     width: 4px;
     right: -3px;
+    position: relative;
 }
 
-
-.custom_scroll_container::after {
-    content: '';
+.scroll_track {
     position: absolute;
     right: 3px;
     top: 50%;
@@ -102,12 +122,4 @@
     border-radius: 8px;
     opacity: 0;
     transition: opacity 0.3s ease;
-}
-
-.custom_scroll_container:hover::after {
-    opacity: 1;
-}
-
-.custom_scroll_container.rcs_native-scroll::after {
-    opacity: 0;
 }
