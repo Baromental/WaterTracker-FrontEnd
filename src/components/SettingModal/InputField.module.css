@@ -1,0 +1,43 @@
+.wrap {
+  margin-top: 24px;
+}
+
+.label {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11111;
+  color: #2f2f2f;
+}
+
+.input {
+  margin-top: 8px;
+  background: #fff;
+
+  border: 1px solid #d7e3ff;
+  border-radius: 6px;
+  padding: 12px 10px;
+  width: 392px;
+  height: 44px;
+
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #407bff;
+
+  &:hover {
+    border-color: blueviolet;
+  }
+
+  &::placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #9ebbff;
+  }
+}
+
+.button {
+}
