@@ -1,11 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import BgSectionWelcomePage from '../../components/BgSectionWelcomePage/BgSectionWelcomePage.jsx'
 import s from './WelcomePage.module.css';
 import sprite from '../../img/icons/sprite.svg';
 
 const WelcomePage = () => {
     return (
-        <section className={s.welcomePageSection}>
+        <BgSectionWelcomePage>
+            <div className={s.welcomePageSection}>
             <h1 className={s.title}>Water consumption tracker</h1>
             <div className={s.welcomePageContainer}>
                 <div className={s.buttonContainer}>
@@ -48,7 +50,8 @@ const WelcomePage = () => {
                     </ul>
                 </div>
             </div>
-        </section>
+            </div>
+        </BgSectionWelcomePage>
     );
 };
 

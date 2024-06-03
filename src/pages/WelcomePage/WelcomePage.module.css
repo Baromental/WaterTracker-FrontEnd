@@ -114,22 +114,6 @@
 @media screen and (max-width: 768px) {
     .welcomePageSection{
         padding: 24px 20px 40px 20px;
-        background-image: url('../../img/images/background-main-page-phone.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-        align-items: center;
-    }
-
-    @media screen and (min-resolution: 192dpi),
-    screen and (min-device-pixel-ratio: 2),
-    screen and (min-resolution: 2dppx) {
-        .welcomePageSection {
-        background-image: url('../../img/images/background-main-page-phone@2x.png');
-        }   
     }
 
     .welcomePageContainer{
@@ -159,24 +143,14 @@
     }
 }
 
-@media screen and (min-width: 768px) {
-    .welcomePageSection{
-        padding: 40px 32px 50px 32px;
-        background-image: url('../../img/images/background-main-page-tab.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
 
-    @media screen and (min-resolution: 192dpi),
-    screen and (min-device-pixel-ratio: 2),
-    screen and (min-resolution: 2dppx) {
-        .welcomePageSection {
-        background-image: url('../../img/images/background-main-page-tab@2x.png');
-        }   
-    }
+    
     
     @media screen and (min-width: 768px) and (max-width: 1439px) {
+        .welcomePageSection{
+            padding: 40px 32px 50px 32px;
+        }
+
         .welcomePageContainer{
             flex-direction: column;
             gap: 60px;
@@ -215,23 +189,12 @@
             max-width: 494px;
         }
     }
-}
+
 
 @media screen and (min-width: 1440px) {
+    
     .welcomePageSection{
-        padding: 80px 210px 294px 216px;
-        background-image: url('../../img/images/Background-element-main-page.png'), url('../../img/images/background-main-page-pc.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-
-    @media screen and (min-resolution: 192dpi),
-    screen and (min-device-pixel-ratio: 2),
-    screen and (min-resolution: 2dppx) {
-        .welcomePageSection {
-        background-image: url('../../img/images/Background-element-main-page@2x.png'), url('../../img/images/background-main-page-pc@2x.png');
-        }   
+        padding: 80px 210px 294px 216px;    
     }
 
     .welcomePageContainer{
