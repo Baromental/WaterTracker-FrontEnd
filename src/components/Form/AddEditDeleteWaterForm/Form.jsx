@@ -6,7 +6,7 @@ import RecordingTime from './Inputs/RecordingTime/RecordingTime';
 import ValueOfTheWater from './Inputs/ValueOfTheWater/ValueOfTheWater';
 import { AmountDisplay } from './AmountDisplay/AmountDisplay';
 import s from './Form.module.css';
-import { waterSchema } from '../../../Schemas/waterShema';
+import { waterSchema } from '../../../schemas/waterShema';
 import glass from '../../../img/images/glass.svg';
 import formatDate from '../../../helpers/formatDate';
 import { useDispatch } from 'react-redux';
