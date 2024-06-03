@@ -3,10 +3,10 @@
     padding: 8px 30px;
     width: 100%;
     height: 36px;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
     line-height: 1.25;
     text-align: center;
-    color: #fff;
+    color: var(--white-color);
     border: none;
     box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
     transition: box-shadow 0.3s ease-in-out;
@@ -26,16 +26,16 @@
 }
 
 .blue {
-    background: #407bff;
+    background-color: var(--blue-color);
 }
 
 .red {
-    background-color: #ef5050;
+    background-color: var(--red-color);
 }
 
 .cancel {
     background-color: #d7e3ff;
-    color: #407bff;
+    color: var(--blue-color);
     box-shadow: none;
     transition: opacity 0.3s ease-in-out;
 
@@ -50,7 +50,7 @@
 }
 
 .add {
-    background: #407bff;
+    background-color: var(--blue-color);
     width: 100%;
     display: flex;
     gap: 13px;

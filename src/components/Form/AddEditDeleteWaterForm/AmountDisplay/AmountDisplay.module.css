@@ -1,0 +1,7 @@
+.amount {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--secondary-font-size);
+    line-height: 1.33333;
+    text-align: center;
+    color: var(--blue-color);
+}

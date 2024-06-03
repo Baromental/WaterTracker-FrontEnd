@@ -51,7 +51,7 @@
     transition: border-color 0.3s ease-in-out;
 
     &&:hover {
-        border-color: #ef5050;
+        border-color: var(--red-color);
     }
 }
 
@@ -67,6 +67,6 @@
     width: 16px;
     height: 16px;
     stroke-width: 1px;
-    stroke: #ef5050;
+    stroke: var(--red-color);
     fill: none;
 }

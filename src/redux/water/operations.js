@@ -29,7 +29,6 @@ export const editWaterThunk = createAsyncThunk(
 export const deleteWaterThunk = createAsyncThunk(
   'deleteWater',
   async (waterData, thunkAPI) => {
-    console.log(waterData);
     try {
       const { data } = await authApi.delete(`water/${waterData.id}`);
       return data;

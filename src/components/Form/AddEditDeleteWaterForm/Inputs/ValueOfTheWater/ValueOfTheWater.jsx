@@ -2,7 +2,7 @@ import React from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import s from './ValueOfTheWater.module.css';
 
-const ValueOfTheWater = () => {
+const ValueOfTheWater = ({ className }) => {
   const { control } = useFormContext();
 
   return (
@@ -15,7 +15,7 @@ const ValueOfTheWater = () => {
             Enter the value of the water used:
           </label>
           <input
-            className={s.input}
+            className={`${s.input} ${s[className]}`}
             id="water-value"
             type="number"
             value={field.value}

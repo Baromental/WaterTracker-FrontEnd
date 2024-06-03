@@ -5,7 +5,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 import s from './RecordingTime.module.css';
 import './reactDatepicker.css';
 
-const RecordingTime = () => {
+const RecordingTime = ({ className }) => {
   const { control } = useFormContext();
 
   return (
@@ -28,7 +28,7 @@ const RecordingTime = () => {
             timeIntervals={5}
             timeCaption="Time"
             dateFormat="H:mm aa"
-            className={s.datepicker}
+            className={`${s.datepicker} ${s[className]}`}
             wrapperClassName={s.wrapper_datepicker}
           />
         </div>

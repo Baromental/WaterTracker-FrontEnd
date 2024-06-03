@@ -1,15 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectPercent } from '../../redux/water/waterSlice';
+import { selectNotes, selectPercent } from '../../redux/water/waterSlice';
 import s from './WaterRatioPanel.module.css';
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
 import { useModal } from '../../hooks/useModal';
-import Form from '../Form/AddAndEditForm/Form';
+import Form from '../Form/AddEditDeleteWaterForm/Form';
 import { FiPlusCircle } from 'react-icons/fi';
+import { selectWaterRate } from '../../redux/auth/authSlice';
 
 const WaterRatioPanel = () => {
-  const percent = useSelector(selectPercent);
+  const waterRate = useSelector(selectWaterRate);
+  const notes = useSelector(selectNotes);
+  const totalAmount = notes.reduce((acc, curr) => acc + curr.amount, 0);
+  const percent = Math.round((totalAmount / (waterRate * 1000)) * 100);
+
   const { isOpen, toggle } = useModal();
   return (
     <section className={s.water_ratio_section}>
@@ -27,9 +32,23 @@ const WaterRatioPanel = () => {
           <div className={s.mark}></div>
         </div>
         <div className={s.marks_label_wrapper}>
-          <div className={s.mark_label}>0%</div>
-          <div className={s.mark_label_middle}>50%</div>
-          <div className={s.mark_label}>100%</div>
+          <div
+            className={`${s.mark_label} ${
+              percent >= 0 && percent < 50 ? s.active : ''
+            }`}
+          >
+            0%
+          </div>
+          <div
+            className={`${s.mark_label} ${
+              percent >= 50 && percent < 100 ? s.active : ''
+            }`}
+          >
+            50%
+          </div>
+          <div className={`${s.mark_label} ${percent >= 100 ? s.active : ''}`}>
+            100%
+          </div>
         </div>
       </div>
       <div className={s.bottom_section_wrapper}>

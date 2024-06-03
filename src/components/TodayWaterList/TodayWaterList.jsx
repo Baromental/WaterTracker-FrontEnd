@@ -5,7 +5,7 @@ import s from './TodayWaterList.module.css';
 import { FiPlus } from 'react-icons/fi';
 import { CustomScroll } from 'react-custom-scroll';
 import Modal from '../Modal/Modal';
-import Form from '../Form/AddAndEditForm/Form';
+import Form from '../Form/AddEditDeleteWaterForm/Form';
 import { useSelector } from 'react-redux';
 import { selectNotes } from '../../redux/water/waterSlice';
 
