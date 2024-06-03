@@ -9,7 +9,7 @@ import {
   updateAvatarThunk,
   updateUserThunk,
 } from './operations';
-
+// https://cdn.pixabay.com/photo/2022/02/04/03/06/woman-6991826_1280.png
 const initialState = {
   name: '',
   email: '',
@@ -41,6 +41,10 @@ const slice = createSlice({
   reducers: {
     logout: state => {
       return initialState;
+    },
+
+    setName: (state, action) => {
+      state.name = action.payload;
     },
   },
   extraReducers: builder => {
@@ -97,7 +101,7 @@ const slice = createSlice({
           state.isLoggedIn = true;
           state.loading = false;
           state.isRefresh = false;
-          toast.success(`Welcome, ${payload.name}`);
+          toast.success(`Welcome, ${payload.name || payload.email}`);
         }
       )
       .addMatcher(
@@ -126,6 +130,7 @@ const slice = createSlice({
           state.error = payload;
           state.loading = false;
           state.isRefresh = false;
+          console.log(payload);
           toast.error(payload);
         }
       );
@@ -144,4 +149,4 @@ export const {
   selectIsRefresh,
   selectIsLoading,
 } = slice.selectors;
-export const { logout } = slice.actions;
+export const { logout, setName } = slice.actions;

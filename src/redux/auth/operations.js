@@ -78,10 +78,15 @@ export const updateUserThunk = createAsyncThunk(
 
 export const updateAvatarThunk = createAsyncThunk(
   'updateAvatar',
-  async (body, thunkAPI) => {
+  async (formData, thunkAPI) => {
     try {
-      const { data } = await authApi.patch('user/avatars', body);
-      return data;
+      const response = await authApi.patch('user/avatars', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log(response);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
     }

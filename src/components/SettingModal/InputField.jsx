@@ -25,6 +25,7 @@ const InputField = ({
         value={value}
         placeholder={placeholder}
         onChange={onChange}
+        autoComplete="off"
       />
     </div>
   );

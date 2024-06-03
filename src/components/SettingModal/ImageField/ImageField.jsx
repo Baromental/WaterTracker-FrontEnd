@@ -7,6 +7,7 @@ const ImageField = ({
   type,
   value,
   label,
+  src,
   placeholder,
   register,
   onChange,
@@ -20,8 +21,9 @@ const ImageField = ({
         <img
           className={s.image}
           width="80"
-          src="../../img/213796.001.jpg"
-          alt="Currency rate"
+          height="80"
+          src={src}
+          alt="avatar"
         />
         <input
           id={id}

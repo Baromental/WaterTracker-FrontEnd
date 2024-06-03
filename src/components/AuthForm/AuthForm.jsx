@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 import s from './AuthForm.module.css';
 
@@ -12,12 +12,16 @@ export const AuthForm = ({ formType, onSubmit }) => {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
+
   const submit = data => {
     const { repeatPassword, ...signupData } = data;
     console.log(data);
     onSubmit(signupData);
     console.log(data);
     reset();
+    formType === 'register' ? navigate('/signin') : navigate('/');
+    // navigate('/');
   };
 
   return (

@@ -4,10 +4,9 @@ import s from './RadioButton.module.css';
 const RadioButton = ({
   name,
   id,
-
+  defaultChecked,
   value,
   label,
-  placeholder,
   register,
   onChange,
 }) => {
@@ -19,9 +18,9 @@ const RadioButton = ({
         {...register(`${name}`)}
         name={name}
         value={value}
-        placeholder={placeholder}
         onChange={onChange}
         type="radio"
+        defaultChecked={defaultChecked}
       />
       <label htmlFor={id} className={s.label}>
         {label}
