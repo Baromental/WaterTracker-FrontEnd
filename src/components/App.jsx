@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from '../components/Layout'
 import WelcomePage from '../pages/WelcomePage/WelcomePage';
@@ -9,8 +9,15 @@ import PublicRoutes from '../routes/PublicRoutes'
 
 import 'modern-normalize';
 import MainPage from '../pages/MainPage/MainPage';
+import { useDispatch } from 'react-redux';
+import { refreshThunk } from '../redux/auth/operations';
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshThunk());
+  }, [dispatch]);
+
   return (
     <div>
       <Routes>

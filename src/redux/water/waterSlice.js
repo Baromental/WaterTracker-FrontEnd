@@ -25,11 +25,11 @@ const slice = createSlice({
         state.notes.push(payload);
       })
       .addCase(editWaterThunk.fulfilled, (state, { payload }) => {
-        const index = state.notes.findIndex(note => note.id === payload.id);
+        const index = state.notes.findIndex(note => note._id === payload._id);
         state.notes.splice(index, 1, payload);
       })
       .addCase(deleteWaterThunk.fulfilled, (state, { payload }) => {
-        state.notes = state.notes.filter(note => note.id !== payload.id);
+        state.notes = state.notes.filter(note => note._id !== payload._id);
       })
       .addCase(fetchWaterDataTodayThunk.fulfilled, (state, { payload }) => {
         state.notes = payload.result;

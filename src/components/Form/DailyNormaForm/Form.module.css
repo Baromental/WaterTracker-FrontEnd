@@ -1,0 +1,143 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form_title {
+    font-weight: var(--font-weight-medium);
+    font-size: 26px;
+    line-height: 1.23077;
+    color: var(--black-color);
+}
+
+.formula_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+}
+
+.formula {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @media screen and (min-width:768px) {
+        flex-direction: row;
+    }
+}
+
+.formula_explanation {
+    border: 1px solid #d7e3ff;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 12px;
+    line-height: 1.33333;
+    color: #8f8f8f;
+}
+
+.calculation_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.calculation_title {
+    margin-bottom: 16px;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--secondary-font-size);
+    line-height: 1.11111;
+    color: var(--black-color);
+}
+
+.gender_inputs {
+    display: flex;
+    gap: 24px;
+}
+
+.gender_input_wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.input_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input_gender {
+    width: 14px;
+    height: 14px;
+    appearance: none;
+    border-radius: 50%;
+    background-clip: content-box;
+    border: 1px solid var(--blue-color);
+    cursor: pointer;
+}
+
+.input_gender:checked {
+    background-color: var(--blue-color);
+    padding: 2px;
+}
+
+.label {
+    line-height: 1.25;
+    color: var(--black-color);
+}
+
+.input {
+    border: 1px solid #d7e3ff;
+    color: var(--blue-color);
+    border-radius: 6px;
+    padding: 12px 10px;
+    width: 100%;
+}
+
+.required_water_input_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.25;
+    color: var(--black-color);
+
+}
+
+.required_water_input_wrapper>label {
+    width: 200px;
+
+    @media screen and (min-width:768px) {
+        width: auto;
+    }
+}
+
+.required_water {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--secondary-font-size);
+    line-height: 1.33333;
+    color: var(--blue-color);
+}
+
+.btn_wrapper {
+
+    @media screen and (min-width:768px) {
+        margin-left: auto;
+    }
+}
+
+.accent_color {
+    color: var(--blue-color);
+}
+
+.validation_error {
+    color: var(--red-color);
+    font-size: 14px;
+    line-height: 1.28571;
+    margin-top: -12px;
+}
+
+.input_error {
+    border: 1px solid var(--red-color);
+    color: var(--red-color);
+}

@@ -17,9 +17,9 @@
 }
 
 .section_title {
-    font-size: 18px;
+    font-size: var(--secondary-font-size);
     line-height: 1.33333;
-    color: #407bff;
+    color: var(--blue-color);
     margin-bottom: 8px;
 }
 
@@ -31,7 +31,6 @@
     @media screen and (min-width:1440px) {
         width: 391px;
     }
-
 }
 
 .progress_bar_wrapper {
@@ -75,8 +74,9 @@
     width: 14px;
     height: 14px;
     border-radius: 100%;
-    background-color: #fff;
-    border: 1px solid #407bff;
+    background-color: var(--white-color);
+    border: 1px solid var(--blue-color);
+    transition: left 0.5s;
 }
 
 .marks_wrapper {
@@ -84,6 +84,14 @@
     justify-content: space-between;
     width: 256px;
     margin: 0 auto;
+
+    @media screen and (min-width:768px) {
+        width: 325px;
+    }
+
+    @media screen and (min-width:1440px) {
+        width: 360px;
+    }
 }
 
 .marks_label_wrapper {
@@ -96,15 +104,14 @@
 .mark_label {
     font-size: 12px;
     line-height: 1.33333;
-    color: #407bff;
+    color: var(--blue-color);
     margin-top: 4px;
 }
 
-.mark_label_middle {
-    font-weight: 500;
+.mark_label.active {
+    font-weight: var(--font-weight-medium);
     line-height: 1.25;
-    text-align: center;
-    color: #407bff;
+    font-size: var(--primarily-font-size);
 }
 
 .mark {
@@ -120,7 +127,7 @@
 
 .icon_plus_circle {
     stroke-width: 2px;
-    stroke: #fff;
+    stroke: var(--white-color);
     fill: none;
     width: 18px;
     height: 18px;

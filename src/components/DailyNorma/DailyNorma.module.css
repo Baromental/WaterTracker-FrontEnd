@@ -1,9 +1,38 @@
 .section_daily_norma {
     border: 1px solid #ecf2ff;
     border-radius: 10px;
-    padding: 8px 20px;
+    padding: 8px 18px;
     width: 164px;
     height: 74px;
     box-shadow: 0 4px 8px 0 rgba(158, 187, 255, 0.12);
-    background: #fff;
+    background-color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.section_title {
+    font-weight: var(--font-weight-medium);
+    font-size: var(--secondary-font-size);
+    line-height: 1.33333;
+    color: var(--black-color);
+}
+
+.daily_norma {
+    font-weight: var(--font-weight-bold);
+    font-size: 22px;
+    line-height: 1;
+    color: var(--blue-color);
+}
+
+.btn_edit {
+    line-height: 1.25;
+    color: #8baeff;
+    border: none;
+    background-color: transparent;
+}
+
+.bottom_section_wrapper {
+    display: flex;
+    gap: 12px;
 }

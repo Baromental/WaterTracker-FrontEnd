@@ -4,7 +4,7 @@ import { FiPlus } from 'react-icons/fi';
 import { FiMinus } from 'react-icons/fi';
 import s from './AmountOfWater.module.css';
 
-export const AmountOfWater = () => {
+const AmountOfWater = () => {
   const { control } = useFormContext();
 
   return (
@@ -42,3 +42,5 @@ export const AmountOfWater = () => {
     />
   );
 };
+
+export default AmountOfWater;
