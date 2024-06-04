@@ -10,7 +10,9 @@ const PasswordField = ({
   placeholder,
   register,
   onChange,
+  error,
 }) => {
+  console.log(error);
   return (
     <div className={s.wrap}>
       <label htmlFor={id} className={s.label}>
@@ -25,7 +27,9 @@ const PasswordField = ({
         value={value}
         placeholder={placeholder}
         onChange={onChange}
+        // error={error}
       />
+      {error && <span className={s.error}>{error}</span>}
     </div>
   );
 };

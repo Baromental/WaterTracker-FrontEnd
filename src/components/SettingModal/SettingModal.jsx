@@ -19,6 +19,7 @@ import {
   updateAvatarThunk,
   updateUserThunk,
 } from '../../redux/auth/operations';
+import ImageField2 from './lala/ImageField2';
 
 const SettingModal = ({ onSubmit }) => {
   const dispatch = useDispatch();
@@ -29,7 +30,14 @@ const SettingModal = ({ onSubmit }) => {
   const photo = useSelector(selectAvatarURL);
 
   const loggedIn = useSelector(selectIsLoggedIn);
-  const { register, handleSubmit, setValue } = useForm({
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    setError,
+    clearErrors,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       name,
       email,
@@ -45,8 +53,36 @@ const SettingModal = ({ onSubmit }) => {
 
   const submit = data => {
     console.log(data);
-    const { email, name, gender } = data;
-    dispatch(updateUserThunk({ email, name, gender }));
+    const { email, name, gender, newPass, password, repeatNewPass } = data;
+
+    if (newPass && password === newPass) {
+      setError('newPass', {
+        type: 'manual',
+        message: 'New password cannot be the same as the current password.',
+      });
+      return;
+    }
+
+    if (newPass && newPass !== repeatNewPass) {
+      setError('repeatNewPass', {
+        type: 'manual',
+        message: 'New password and repeat password do not match.',
+      });
+      return;
+    }
+
+    const updateData = { email, name, gender };
+
+    if (newPass === password) {
+    }
+
+    if (password && newPass && newPass === repeatNewPass) {
+      updateData.password = password;
+      updateData.newPass = newPass;
+    }
+
+    console.log(updateData);
+    dispatch(updateUserThunk(updateData));
   };
 
   const handlePhotoURLChange = e => {
@@ -65,7 +101,7 @@ const SettingModal = ({ onSubmit }) => {
         <>
           <h1 className={s.title}>Setting</h1>
           <form className={s.form} onSubmit={handleSubmit(submit)}>
-            <ImageField
+            <ImageField2
               name="avatar"
               type="file"
               label="Your photo"
@@ -74,6 +110,15 @@ const SettingModal = ({ onSubmit }) => {
               register={register}
               onChange={handlePhotoURLChange}
             />
+            {/* <ImageField
+              name="avatar"
+              type="file"
+              label="Your photo"
+              placeholder="Upload a photo"
+              src={photo}
+              register={register}
+              onChange={handlePhotoURLChange}
+            /> */}
 
             <div className={s.mainWrap}>
               <div>
@@ -124,6 +169,7 @@ const SettingModal = ({ onSubmit }) => {
                   label="Outdated password:"
                   placeholder="Password"
                   register={register}
+                  error={errors.password?.message}
                 />
                 <PasswordField
                   name="newPass"
@@ -131,6 +177,7 @@ const SettingModal = ({ onSubmit }) => {
                   label="New Password:"
                   placeholder="Password"
                   register={register}
+                  error={errors.newPass?.message}
                 />
                 <PasswordField
                   name="repeatNewPass"
@@ -138,6 +185,7 @@ const SettingModal = ({ onSubmit }) => {
                   label="Repeat new password:"
                   placeholder="Password"
                   register={register}
+                  error={errors.repeatNewPass?.message}
                 />
               </fieldset>
             </div>

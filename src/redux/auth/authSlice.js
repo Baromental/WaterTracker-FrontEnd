@@ -11,12 +11,13 @@ import {
 } from './operations';
 // https://cdn.pixabay.com/photo/2022/02/04/03/06/woman-6991826_1280.png
 const initialState = {
-  name: '',
-  email: '',
+  name: 'nata',
+  email: 'asdfghgfd@bnm.jh',
   password: '',
   gender: 'woman',
   waterRate: 1.5,
-  avatarURL: '',
+  avatarURL:
+    'https://cdn.pixabay.com/photo/2022/02/04/03/06/woman-6991826_1280.png',
   token: null,
   loading: false,
   error: null,
@@ -81,14 +82,19 @@ const slice = createSlice({
         state.avatarURL = payload.avatarURL;
         state.loading = false;
         state.isRefresh = false;
+        toast.success(`Data changed successfully`);
+      })
+      .addCase(updateUserThunk.fulfilled, (state, { payload }) => {
+        state.name = payload.name;
+        state.email = payload.email;
+        state.password = payload.password;
+        state.gender = payload.gender;
+        state.loading = false;
+        state.isRefresh = false;
         toast.success(`The avatar has been downloaded successfully`);
       })
       .addMatcher(
-        isAnyOf(
-          registerThunk.fulfilled,
-          loginThunk.fulfilled,
-          updateUserThunk.fulfilled
-        ),
+        isAnyOf(registerThunk.fulfilled, loginThunk.fulfilled),
         (state, { payload }) => {
           state.name = payload.name;
           state.email = payload.email;
