@@ -6,7 +6,7 @@ import RecordingTime from '../Inputs/RecordingTime/RecordingTime';
 import ValueOfTheWater from '../Inputs/ValueOfTheWater/ValueOfTheWater';
 import { AmountDisplay } from '../AmountDisplay/AmountDisplay';
 import s from './Form.module.css';
-import { waterSchema } from '../../../Schemas/waterShema';
+import { waterSchema } from '../../../schemas/waterShema';
 import glass from '../../../img/images/glass.svg';
 import formatDate from '../../../helpers/formatDate';
 import { useDispatch } from 'react-redux';
@@ -106,14 +106,11 @@ const Form = ({ type, amount, date, id, closeModal }) => {
         <div className={s.btn_wrapper}>
           {type !== 'delete' && <AmountDisplay />}
           {type === 'delete' && (
-            <Button type="button" className={'cancel'} closeModal={closeModal}>
+            <Button type="button" className={'cancel'} onClick={closeModal}>
               Cancel
             </Button>
           )}
-          <Button
-            type="submit"
-            className={type === 'delete' ? 'delete' : 'save'}
-          >
+          <Button type="submit" className={type === 'delete' ? 'red' : 'blue'}>
             {type === 'delete' ? 'Delete' : 'Save'}
           </Button>
         </div>

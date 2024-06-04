@@ -1,0 +1,60 @@
+.welcomePageBackground {
+    position: relative;
+    background-image: url('../../img/images/Background-element-main-page.png'), url('../../img/images/background-main-page-phone.png');
+    background-size: auto, cover;
+    background-position: bottom 0px center, center;
+    background-repeat: no-repeat;
+  }
+  
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .welcomePageBackground {
+         min-height: 100vh;
+      background-image: url('../../img/images/Background-element-main-page.png'), url('../../img/images/background-main-page-phone.png');
+    }
+  
+    @media screen and (min-resolution: 192dpi),
+    screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 2dppx) {
+      .welcomePageBackground {
+        background-image: url('../../img/images/Background-element-main-page@2x.png'), url('../../img/images/background-main-page-phone@2x.png');
+      }
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    .welcomePageBackground {
+        height: calc(100vh - 60px);
+      background-image: url('../../img/images/Background-element-main-page.png'), url('../../img/images/background-main-page-tab.png');
+    }
+  
+    @media screen and (min-resolution: 192dpi),
+    screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 2dppx) {
+      .welcomePageBackground {
+        background-image: url('../../img/images/Background-element-main-page@2x.png'), url('../../img/images/background-main-page-tab@2x.png');
+      }
+    }
+  }
+  
+  @media screen and (min-width: 1440px) {
+    .welcomePageBackground {
+        height: calc(100vh - 60px);
+      background-image: url('../../img/images/Background-element-main-page.png'), url('../../img/images/background-main-page-pc.png');
+      background-size: auto, 100%;
+      background-position: bottom 0px center, bottom 0px center;
+    }
+  
+    @media screen and (min-resolution: 192dpi),
+    screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 2dppx) {
+      .welcomePageBackground {
+        background-image: url('../../img/images/Background-element-main-page@2x.png'), url('../../img/images/background-main-page-pc@2x.png');
+      }
+    }
+  }
+  

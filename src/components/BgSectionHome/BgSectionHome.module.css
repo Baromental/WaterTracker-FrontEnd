@@ -1,15 +1,46 @@
 .section {
-  position: relative;
-  height: calc(100vh - 60px);
-  background-image: url('../../img/images/Background-element-main-page.png'),
-    url('../../img/images/Bottle-home-screen-pc.png');
-  background-size: auto, 44%;
-  background-position: bottom 0px center, bottom 170px left 40px;
-  background-repeat: no-repeat;
+  margin-top: 24px;
+
+
+  @media screen and (min-width:1440px) {
+    margin-top: 20px;
+  }
 }
 
+
 .container {
-  margin-left: auto;
-  margin-right: auto;
-  padding: 20px 20px 20px 736px;
+  padding: 0px 20px 40px;
+  margin: 0 auto;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  position: relative;
+  height: 100vh;
+  background-image: url('../../img/images/Bottle-home-screen-phone.png'), url('../../img/images/background_element_home_screen_phone.png');
+  background-size: auto, auto;
+  background-position: top 82px center, top 28px center;
+  background-repeat: no-repeat;
+
+
+  @media screen and (min-width:768px) {
+    max-width: 768px;
+    padding: 16px 32px 44px;
+    background-image: url('../../img/images/Bottle-home-screen-tab.png'), url('../../img/images/background_element_home_screen_tab.png');
+    background-position: top 0px center, top 0px center;
+  }
+
+  @media screen and (min-width:1440px) {
+    flex-direction: row;
+    gap: 32px;
+    max-width: 1440px;
+    padding: 0px 112px 40px;
+    background-repeat: no-repeat;
+    background-size: auto, auto;
+    background-image: url('../../img/images/Bottle-home-screen-pc.png'),
+      url('../../img/images/Background-element-main-page.png');
+    background-position: top 0 left,
+      top 20px center;
+  }
+
 }
