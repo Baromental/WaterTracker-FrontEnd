@@ -1,10 +1,7 @@
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { AmountOfWater } from './Inputs/AmountOfWater/AmountOfWater';
-import RecordingTime from './Inputs/RecordingTime/RecordingTime';
-import ValueOfTheWater from './Inputs/ValueOfTheWater/ValueOfTheWater';
-import { AmountDisplay } from './AmountDisplay/AmountDisplay';
+import AmountDisplay from '../AmountDisplay/AmountDisplay';
 import s from './Form.module.css';
 import { waterSchema } from '../../../schemas/waterShema';
 import glass from '../../../img/images/glass.svg';
@@ -16,6 +13,9 @@ import {
   editWaterThunk,
 } from '../../../redux/water/operations';
 import Button from '../../Button/Button';
+import AmountOfWater from '../Inputs/AmountOfWater/AmountOfWater';
+import RecordingTime from '../Inputs/RecordingTime/RecordingTime';
+import ValueOfTheWater from '../Inputs/ValueOfTheWater/ValueOfTheWater';
 
 const Form = ({ type, amount, date, id, closeModal }) => {
   const dispatch = useDispatch();
