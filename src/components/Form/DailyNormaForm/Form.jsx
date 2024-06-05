@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useSelector } from 'react-redux';
+import { selectWaterRate } from '../../../redux/auth/authSlice';
 import { dailyNormaSchema } from '../../../Schemas/dailyNormaShema';
 import Button from '../../Button/Button';
 import s from './Form.module.css';
 
 const Form = () => {
+  const prevWaterRate = useSelector(selectWaterRate);
+
   const [userWaterRate, setUserWaterRate] = useState(0);
+  const [calculatedWaterRate, setCalculatedWaterRate] = useState(0);
 
   const {
     register,
@@ -30,6 +35,8 @@ const Form = () => {
     } else {
       waterDailyNorma = weight * 0.04 + activity * 0.6;
     }
+
+    setCalculatedWaterRate(waterDailyNorma.toFixed(1));
     return waterDailyNorma.toFixed(1);
   };
 
@@ -37,14 +44,21 @@ const Form = () => {
     setUserWaterRate(e.target.value);
   };
 
-  const onSubmit = data => {
+  const onSubmit = () => {
     if (userWaterRate > 0) {
       console.log(userWaterRate);
     } else {
-      const waterRate = calculateWaterDailyNorma(data);
-      console.log(waterRate);
+      console.log(calculatedWaterRate);
     }
   };
+
+  const formData = watch();
+
+  useEffect(() => {
+    if (formData.gender && formData.weight > 0 && formData.activity >= 0) {
+      calculateWaterDailyNorma(formData);
+    }
+  }, [formData]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
@@ -139,7 +153,11 @@ const Form = () => {
             The required amount of water in liters per day:
           </label>
           <output id="requiredWater" className={s.required_water}>
-            {calculateWaterDailyNorma(watch()) + ' L'}
+            {userWaterRate > 0
+              ? `${userWaterRate} L`
+              : calculatedWaterRate > 0
+              ? `${calculatedWaterRate} L`
+              : `${prevWaterRate} L`}
           </output>
         </div>
       </div>
@@ -155,7 +173,9 @@ const Form = () => {
           onChange={handleWaterRateChange}
         />
         {errors.waterRate && (
-          <p className={s.validation_error}>{errors.waterRate.message}</p>
+          <p className={s.validation_error_waterRate}>
+            {errors.waterRate.message}
+          </p>
         )}
       </div>
       <div className={s.btn_wrapper}>
