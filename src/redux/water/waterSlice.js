@@ -4,12 +4,14 @@ import {
   addWaterThunk,
   deleteWaterThunk,
   editWaterThunk,
+  fetchWaterDataMonthThunk,
   fetchWaterDataTodayThunk,
 } from './operations';
 
 const initialState = {
   percent: 0,
   notes: [],
+  notesPerMonth: [],
 };
 
 const slice = createSlice({
@@ -18,6 +20,7 @@ const slice = createSlice({
   selectors: {
     selectNotes: state => state.notes,
     selectPercent: state => state.percent,
+    selectNotesPerMonth: state => state.notesPerMonth,
   },
   extraReducers: builder => {
     builder
@@ -34,9 +37,13 @@ const slice = createSlice({
       .addCase(fetchWaterDataTodayThunk.fulfilled, (state, { payload }) => {
         state.notes = payload.result;
         state.percent = payload.percent;
+      })
+      .addCase(fetchWaterDataMonthThunk.fulfilled, (state, { payload }) => {
+        state.notesPerMonth = payload;
       });
   },
 });
 
 export const waterReducer = slice.reducer;
-export const { selectNotes, selectPercent } = slice.selectors;
+export const { selectNotes, selectPercent, selectNotesPerMonth } =
+  slice.selectors;
