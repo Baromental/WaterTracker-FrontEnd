@@ -25,7 +25,7 @@ const App = () => {
           <Route index element={<WelcomePage />} />
           <Route path="signup" element={ <PublicRoutes> <SignupPage/> </PublicRoutes> } />
           <Route path="signin" element={ <PublicRoutes> <SigninPage /> </PublicRoutes> } />
-          <Route path="water-tracker" element={ <PrivateRoutes> <MainPage /> </PrivateRoutes> } />
+          <Route path="home" element={ <PrivateRoutes> <MainPage /> </PrivateRoutes> } />
         </Route>
       </Routes>
     </div>
