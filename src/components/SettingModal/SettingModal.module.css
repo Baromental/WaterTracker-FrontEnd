@@ -1,11 +1,3 @@
-.page {
-  width: 1008px;
-  padding: 32px 24px;
-  background-color: aquamarine;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .title {
   margin-bottom: 24px;
   font-family: 'Roboto', sans-serif;
@@ -16,8 +8,8 @@
 }
 
 .form {
-  /* background-color: transparent;
-  width: 280px; */
+  background-color: transparent;
+  /* width: 280px; */
 }
 .imageWrap {
   margin-bottom: 24px;
