@@ -2,12 +2,25 @@ import React, { useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import s from './ModalLogout.module.css';
 import sprite from '../../../../img/icons/sprite.svg';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logoutThunk } from '../../../../redux/auth/operations';
+import { logout } from '../../../../redux/auth/authSlice';
 
 const modalRoot = document.querySelector('#modal');
 
-const ModalLogout = ({ onClose, onLogout }) => {
+const ModalLogout = ({ onClose }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const onLogout = () => {
+    dispatch(logoutThunk());
+    dispatch(logout());
+    onClose();
+    navigate('/');
+  };
+
   const handleKeyDown = useCallback(
-    (e) => {
+    e => {
       if (e.key === 'Escape') {
         onClose();
       }
@@ -23,7 +36,7 @@ const ModalLogout = ({ onClose, onLogout }) => {
     };
   }, [handleKeyDown]);
 
-  const handleBackdropClick = (e) => {
+  const handleBackdropClick = e => {
     if (e.target === e.currentTarget) {
       onClose();
     }

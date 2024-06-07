@@ -30,7 +30,7 @@ export const loginThunk = createAsyncThunk(
 
 export const logoutThunk = createAsyncThunk('logout', async (_, thunkAPI) => {
   try {
-    const { data } = await authApi.delete('auth/logout');
+    const { data } = await authApi.post('auth/logout');
     removeToken();
     return data;
   } catch (error) {

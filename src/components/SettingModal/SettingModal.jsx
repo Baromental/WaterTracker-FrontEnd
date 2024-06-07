@@ -3,10 +3,9 @@ import { set, useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 import s from './SettingModal.module.css';
-import InputField from './InputField';
+import InputField from './InputField/InputField';
 import RadioButton from './RadioButton/RadioButton';
 import PasswordField from './PasswordField/PasswordField';
-import ImageField from './ImageField/ImageField';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectAvatarURL,
@@ -19,7 +18,7 @@ import {
   updateAvatarThunk,
   updateUserThunk,
 } from '../../redux/auth/operations';
-import ImageField2 from './lala/ImageField2';
+import ImageField from './ImageField/ImageField';
 
 const SettingModal = ({ onSubmit }) => {
   const dispatch = useDispatch();
@@ -96,12 +95,12 @@ const SettingModal = ({ onSubmit }) => {
   };
 
   return (
-    <div className={s.page}>
+    <>
       {loggedIn && (
         <>
           <h1 className={s.title}>Setting</h1>
           <form className={s.form} onSubmit={handleSubmit(submit)}>
-            <ImageField2
+            <ImageField
               name="avatar"
               type="file"
               label="Your photo"
@@ -110,15 +109,6 @@ const SettingModal = ({ onSubmit }) => {
               register={register}
               onChange={handlePhotoURLChange}
             />
-            {/* <ImageField
-              name="avatar"
-              type="file"
-              label="Your photo"
-              placeholder="Upload a photo"
-              src={photo}
-              register={register}
-              onChange={handlePhotoURLChange}
-            /> */}
 
             <div className={s.mainWrap}>
               <div>
@@ -194,7 +184,7 @@ const SettingModal = ({ onSubmit }) => {
           </form>
         </>
       )}
-    </div>
+    </>
   );
 };
 
