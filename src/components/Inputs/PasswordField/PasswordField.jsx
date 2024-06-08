@@ -47,7 +47,6 @@ const PasswordField = ({
           value={value}
           placeholder={placeholder}
           onChange={onChange}
-          // error={error}
         />
       </div>
 

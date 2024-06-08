@@ -1,24 +1,33 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import s from './AuthForm.module.css';
+import PasswordField from '../Inputs/PasswordField/PasswordField';
+import InputField from '../Inputs/InputField/InputField';
+import { yupResolver } from '@hookform/resolvers/yup';
 
-export const AuthForm = ({ formType, onSubmit }) => {
+export const AuthForm = ({ formType, onSubmit, schema }) => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({ resolver: yupResolver(schema) });
 
   const navigate = useNavigate();
 
   const submit = data => {
     const { repeatPassword, ...signupData } = data;
-    onSubmit(signupData);
-    reset();
-    formType === 'register' ? navigate('/signin') : navigate('/home');
+    onSubmit(signupData)
+      .then(response => {
+        if (!response.error) {
+          formType === 'register' ? navigate('/signin') : navigate('/home');
+        }
+      })
+      .catch(error => {
+        toast.error('Submission error:', error);
+      });
   };
 
   return (
@@ -27,50 +36,33 @@ export const AuthForm = ({ formType, onSubmit }) => {
         {formType === 'register' ? 'Sign Up' : 'Sign In'}
       </h1>
       <form className={s.form} onSubmit={handleSubmit(submit)}>
-        <div className={s.wrap}>
-          <label htmlFor="email" className={s.label}>
-            Enter your email
-          </label>
-          <input
-            id="email"
-            className={s.input}
-            {...register('email', {
-              required: { value: true, message: 'Field is required' },
-            })}
-            name="email"
-            placeholder="E-mail"
-          />
-        </div>
-        <div className={s.wrap}>
-          <label htmlFor="password" className={s.label}>
-            Enter your password
-          </label>
-          <input
-            id="password"
-            className={s.input}
-            {...register('password', {
-              required: { value: true, message: 'Field is required' },
-            })}
-            name="password"
-            placeholder="Password"
-          />
-        </div>
+        <InputField
+          id="email"
+          name="email"
+          type="email"
+          label="Enter your email"
+          placeholder="E-mail"
+          register={register}
+          error={errors.email?.message}
+        />
+        <PasswordField
+          id="password"
+          name="password"
+          label="Enter your password"
+          placeholder="Password"
+          register={register}
+          error={errors.password?.message}
+        />
 
         {formType === 'register' && (
-          <div className={s.wrap}>
-            <label htmlFor="repeatPassword" className={s.label}>
-              Repeat password
-            </label>
-            <input
-              id="repeatPassword"
-              className={s.input}
-              {...register('repeatPassword', {
-                required: { value: true, message: 'Field is required' },
-              })}
-              name="repeatPassword"
-              placeholder="Repeat password"
-            />
-          </div>
+          <PasswordField
+            id="repeatPassword"
+            name="repeatPassword"
+            label="Repeat password"
+            placeholder="Repeat password"
+            register={register}
+            error={errors.repeatPassword?.message}
+          />
         )}
         <button className={s.button}>
           {formType === 'register' ? 'Sign Up' : 'Sign In'}
