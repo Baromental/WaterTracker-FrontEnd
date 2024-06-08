@@ -11,15 +11,25 @@ const CalendarItem = ({ note, index }) => {
       setStatsListVisible(false);
     }
   };
+
+  const handleEscapePress = event => {
+    if (event.key === 'Escape') {
+      setStatsListVisible(false);
+    }
+  };
+
   useEffect(() => {
     if (isStatsListVisible) {
       document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleEscapePress);
     } else {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapePress);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapePress);
     };
   }, [isStatsListVisible]);
 
@@ -41,7 +51,7 @@ const CalendarItem = ({ note, index }) => {
       </p>
       <p className={s.percent}>{note.percent}</p>
       {isStatsListVisible && (
-        <DaysGeneralStats note={note} index={index} ref={statsList} />
+        <DaysGeneralStats note={note} index={index + 1} ref={statsList} />
       )}
     </li>
   );
