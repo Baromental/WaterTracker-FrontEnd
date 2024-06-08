@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
-import s from './ModalSettings.module.css';
+import s from './SettingModal.module.css';
 import sprite from '../../../../img/icons/sprite.svg';
 import SettingModal from '../../../SettingModal/SettingModal';
 

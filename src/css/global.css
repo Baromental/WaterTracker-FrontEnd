@@ -26,7 +26,7 @@ body {
   font-weight: var(--font-weight-regular);
   background-color: #ffffff;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1440px) {
     overflow: hidden;
   }
 }
