@@ -10,7 +10,7 @@
 
 .modal {
     position: relative;
-    background-color: white;
+    background-color: var(--white-color);
     padding: 24px 12px;
     overflow: hidden;
     width: 280px;

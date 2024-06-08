@@ -1,21 +1,22 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import AmountDisplay from '../AmountDisplay/AmountDisplay';
-import s from './Form.module.css';
 import { waterSchema } from '../../../schemas/waterShema';
-import glass from '../../../img/images/glass.svg';
 import formatDate from '../../../helpers/formatDate';
-import { useDispatch } from 'react-redux';
 import {
   addWaterThunk,
   deleteWaterThunk,
   editWaterThunk,
+  fetchWaterDataMonthThunk,
 } from '../../../redux/water/operations';
 import Button from '../../Button/Button';
+import AmountDisplay from '../AmountDisplay/AmountDisplay';
 import AmountOfWater from '../Inputs/AmountOfWater/AmountOfWater';
 import RecordingTime from '../Inputs/RecordingTime/RecordingTime';
 import ValueOfTheWater from '../Inputs/ValueOfTheWater/ValueOfTheWater';
+import glass from '../../../img/images/glass.svg';
+import s from './Form.module.css';
 
 const Form = ({ type, amount, date, id, closeModal }) => {
   const dispatch = useDispatch();
@@ -33,7 +34,6 @@ const Form = ({ type, amount, date, id, closeModal }) => {
   } = methods;
 
   const onSubmit = data => {
-    console.log(data);
     data.date = data.date.toString();
     switch (type) {
       case 'edit':
@@ -48,6 +48,7 @@ const Form = ({ type, amount, date, id, closeModal }) => {
       default:
         break;
     }
+    dispatch(fetchWaterDataMonthThunk());
     closeModal();
   };
 
