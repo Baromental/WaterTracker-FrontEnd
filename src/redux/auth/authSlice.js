@@ -82,7 +82,7 @@ const slice = createSlice({
         state.avatarURL = payload.avatarURL;
         state.loading = false;
         state.isRefresh = false;
-        toast.success(`Data changed successfully`);
+        toast.success(`The avatar has been downloaded successfully`);
       })
       .addCase(updateUserThunk.fulfilled, (state, { payload }) => {
         state.name = payload.name;
@@ -91,25 +91,35 @@ const slice = createSlice({
         state.gender = payload.gender;
         state.loading = false;
         state.isRefresh = false;
-        toast.success(`The avatar has been downloaded successfully`);
+        toast.success(`Data changed successfully`);
       })
-      .addMatcher(
-        isAnyOf(registerThunk.fulfilled, loginThunk.fulfilled),
-        (state, { payload }) => {
-          state.name = payload.name;
-          state.email = payload.email;
-          state.password = payload.password;
-          state.gender = payload.gender;
-          state.waterRate = payload.waterRate;
-          state.avatarURL = payload.avatarURL;
-          state.token = payload.token;
-          state.loading = false;
-          state.isLoggedIn = true;
-          state.loading = false;
-          state.isRefresh = false;
-          toast.success(`Welcome, ${payload.name || payload.email}`);
-        }
-      )
+      .addCase(registerThunk.fulfilled, (state, { payload }) => {
+        state.name = payload.name;
+        state.email = payload.email;
+        state.password = payload.password;
+        state.gender = payload.gender;
+        state.waterRate = payload.waterRate;
+        state.avatarURL = payload.avatarURL;
+        state.token = payload.token;
+        state.loading = false;
+        state.loading = false;
+        state.isRefresh = false;
+        toast.success(`You have successfully registered`);
+      })
+      .addCase(loginThunk.fulfilled, (state, { payload }) => {
+        state.name = payload.name;
+        state.email = payload.email;
+        state.password = payload.password;
+        state.gender = payload.gender;
+        state.waterRate = payload.waterRate;
+        state.avatarURL = payload.avatarURL;
+        state.token = payload.token;
+        state.loading = false;
+        state.isLoggedIn = true;
+        state.loading = false;
+        state.isRefresh = false;
+        toast.success(`Welcome, ${payload.name || payload.email}`);
+      })
       .addMatcher(
         isAnyOf(
           registerThunk.pending,
