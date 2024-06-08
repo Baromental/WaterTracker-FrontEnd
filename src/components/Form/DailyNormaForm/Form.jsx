@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { dailyNormaSchema } from '../../../Schemas/dailyNormaShema';
@@ -22,7 +22,7 @@ const Form = () => {
     },
   });
 
-  const calculateWaterDailyNorma = data => {
+  const calculateWaterDailyNorma = useCallback(data => {
     const { gender, weight, activity } = data;
     let waterDailyNorma;
     if (gender === 'women') {
@@ -31,7 +31,7 @@ const Form = () => {
       waterDailyNorma = weight * 0.04 + activity * 0.6;
     }
     return waterDailyNorma.toFixed(1);
-  };
+  }, []);
 
   const handleWaterRateChange = e => {
     setUserWaterRate(e.target.value);

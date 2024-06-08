@@ -49,3 +49,23 @@ export const fetchWaterDataTodayThunk = createAsyncThunk(
     }
   }
 );
+
+export const fetchWaterDataMonthThunk = createAsyncThunk(
+  'fetchWaterDataMonth',
+  async (
+    {
+      year = new Date().getFullYear(),
+      month = new Date()
+        .toLocaleString('default', { month: 'long' })
+        .toLowerCase(),
+    } = {},
+    thunkAPI
+  ) => {
+    try {
+      const { data } = await authApi.get(`water/${year}/${month}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);

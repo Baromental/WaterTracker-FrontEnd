@@ -1,8 +1,8 @@
 import React from 'react';
-import s from './DailyNorma.module.css';
 import { useModal } from '../../hooks/useModal';
 import Form from '../Form/DailyNormaForm/Form';
 import Modal from '../Modal/Modal';
+import s from './DailyNorma.module.css';
 
 const DailyNorma = () => {
   const { isOpen, toggle } = useModal();
