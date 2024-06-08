@@ -17,7 +17,7 @@
   border: 1px solid #d7e3ff;
   border-radius: 6px;
   padding: 12px 10px;
-  width: 392px;
+  width: 100%;
   height: 44px;
 
   font-family: 'Roboto', sans-serif;
@@ -27,17 +27,24 @@
   color: #407bff;
 
   &:hover {
-    border-color: blueviolet;
+    outline: transparent;
+    color: #407bff;
+  }
+
+  &:active {
+    outline: transparent;
   }
 
   &::placeholder {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.25;
     color: #9ebbff;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 392px;
   }
 }
 
-.button {
+.error {
+  color: var(--red-color);
+  border: 1px solid var(--red-color);
 }

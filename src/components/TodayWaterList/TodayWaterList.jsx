@@ -1,13 +1,13 @@
 import React from 'react';
-import { useModal } from '../../hooks/useModal';
-import WaterTodayItem from '../TodayWaterList/TodayWaterItem/TodayWaterItem';
-import s from './TodayWaterList.module.css';
-import { FiPlus } from 'react-icons/fi';
 import { CustomScroll } from 'react-custom-scroll';
-import Modal from '../Modal/Modal';
-import Form from '../Form/AddEditDeleteWaterForm/Form';
 import { useSelector } from 'react-redux';
 import { selectNotes } from '../../redux/water/waterSlice';
+import { useModal } from '../../hooks/useModal';
+import WaterTodayItem from '../TodayWaterList/TodayWaterItem/TodayWaterItem';
+import Modal from '../Modal/Modal';
+import Form from '../Form/AddEditDeleteWaterForm/Form';
+import { FiPlus } from 'react-icons/fi';
+import s from './TodayWaterList.module.css';
 
 const TodayWaterList = () => {
   const { isOpen, toggle } = useModal();

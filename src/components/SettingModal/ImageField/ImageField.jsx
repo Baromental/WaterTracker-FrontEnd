@@ -1,40 +1,69 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
+
+import sprite from '../../../img/icons/sprite.svg';
 import s from './ImageField.module.css';
 
 const ImageField = ({
   name,
-  id,
   type,
-  value,
   label,
-  src,
   placeholder,
+  src,
   register,
   onChange,
 }) => {
+  const [imagePreview, setImagePreview] = useState(src);
+
+  const inputRef = useRef(null);
+
+  const handleFileChange = e => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+    if (onChange) {
+      onChange(e);
+    }
+  };
+
+  const handleButtonClick = () => {
+    inputRef.current.click();
+  };
+
   return (
     <div className={s.wrap}>
-      <label htmlFor={id} className={s.label}>
+      <label className={s.label} htmlFor={name}>
         {label}
       </label>
       <div className={s.imageWrap}>
-        <img
-          className={s.image}
-          width="80"
-          height="80"
-          src={src}
-          alt="avatar"
-        />
+        <div className={s.imagePreviewContainer}>
+          {imagePreview ? (
+            <img src={imagePreview} alt="Preview" className={s.imagePreview} />
+          ) : (
+            <div className={s.placeholder}>{placeholder}</div>
+          )}
+        </div>
         <input
-          id={id}
+          id={name}
           className={s.input}
-          {...register(`${name}`)}
           name={name}
           type={type}
-          value={value}
-          placeholder={placeholder}
-          onChange={onChange}
+          onChange={handleFileChange}
+          ref={e => {
+            register(`${name}`);
+            inputRef.current = e;
+          }}
         />
+        <button type="button" onClick={handleButtonClick} className={s.button}>
+          <svg width="16" height="16" className={s.icon}>
+            <use href={`${sprite}#icon-arrow-up`} />
+          </svg>{' '}
+          Upload a photo
+        </button>
       </div>
     </div>
   );

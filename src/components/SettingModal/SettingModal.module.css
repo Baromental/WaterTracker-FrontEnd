@@ -1,11 +1,3 @@
-.page {
-  width: 1008px;
-  padding: 32px 24px;
-  background-color: aquamarine;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .title {
   margin-bottom: 24px;
   font-family: 'Roboto', sans-serif;
@@ -16,18 +8,28 @@
 }
 
 .form {
-  /* background-color: transparent;
-  width: 280px; */
-}
-.imageWrap {
-  margin-bottom: 24px;
+  background-color: transparent;
+  width: 256px;
+
+  @media screen and (min-width: 768px) {
+    width: 656px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 960px;
+  }
 }
 
 .mainWrap {
-  display: flex;
-  margin-top: 24px;
-  gap: 24px;
-  width: 392px;
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    margin-top: 24px;
+    gap: 24px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 392px;
+  }
 }
 
 .fieldsetGender {
@@ -44,29 +46,15 @@
 
 .fieldset {
   padding: 0;
-  margin: 0;
   border: none;
+
+  @media screen and (max-width: 1439px) {
+    margin-top: 24px;
+  }
 }
 
 .legend {
   margin-bottom: 12px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.11111;
-  color: #2f2f2f;
-}
-
-.image {
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.wrap {
-  /* margin-top: 16px; */
-}
-
-.label {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 18px;

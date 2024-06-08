@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import s from './AuthForm.module.css';
 
@@ -16,16 +16,13 @@ export const AuthForm = ({ formType, onSubmit }) => {
 
   const submit = data => {
     const { repeatPassword, ...signupData } = data;
-    console.log(data);
     onSubmit(signupData);
-    console.log(data);
     reset();
-    formType === 'register' ? navigate('/signin') : navigate('/');
-    // navigate('/');
+    formType === 'register' ? navigate('/signin') : navigate('/home');
   };
 
   return (
-    <>
+    <div className={s.mainWrap}>
       <h1 className={s.title}>
         {formType === 'register' ? 'Sign Up' : 'Sign In'}
       </h1>
@@ -89,6 +86,6 @@ export const AuthForm = ({ formType, onSubmit }) => {
           </Link>
         )}
       </form>
-    </>
+    </div>
   );
 };

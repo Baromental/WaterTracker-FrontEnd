@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import svg from '../../../img/icons/sprite.svg';
-import glass from '../../../img/images/glass.svg';
-import s from './TodayWaterItem.module.css';
+import formatDate from '../../../helpers/formatDate';
 import { useModal } from '../../../hooks/useModal';
 import Modal from '../../Modal/Modal';
 import Form from '../../Form/AddEditDeleteWaterForm/Form';
-
-import formatDate from '../../../helpers/formatDate';
+import svg from '../../../img/icons/sprite.svg';
+import glass from '../../../img/images/glass.svg';
+import s from './TodayWaterItem.module.css';
 
 const TodayWaterItem = ({ note }) => {
   const { isOpen, toggle } = useModal();

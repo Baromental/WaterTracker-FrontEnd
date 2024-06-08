@@ -1,15 +1,73 @@
 .section {
   position: relative;
-  height: calc(100vh - 60px);
-  background-image: url('../../img/images/Background-element-main-page.png'),
-    url('../../img/images/Bottle-for-Sign-In-pc.png');
-  background-size: auto, 55%;
-  background-position: bottom 0px center, bottom 40px left -51px;
+  height: calc(100vh - 80px);
+  background-image: url('../../img/images/Background-element-sign-in-phone.png'),
+    url('../../img/images/Bottle\ Sign\ InBottle-sign-in-phone.png');
   background-repeat: no-repeat;
+  background-position: top 0px center, top 450px center;
 }
 
 .container {
   margin-left: auto;
   margin-right: auto;
-  padding: 140px 20px 20px 840px;
+  width: 320px;
+  padding: 24px 20px;
+}
+
+@media screen and (min-resolution: 192dpi),
+  screen and (min-device-pixel-ratio: 2),
+  screen and (min-resolution: 2dppx) {
+  .section {
+    background-image: url('../../img/images/Background-element-sign-in-phone@2x.png'),
+      url('../../img/images/Bottle\ Sign\ InBottle-sign-in-phone@2x.png');
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    position: relative;
+    height: calc(100vh - 80px);
+    background-image: url('../../img/images/Bottle-for-sign-in-tab.png');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+  }
+
+  .container {
+    width: 768px;
+    padding: 40px 32px;
+  }
+
+  @media screen and (min-resolution: 192dpi),
+    screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 2dppx) {
+    .section {
+      background-image: url('../../img/images/Bottle-home-screen-tab@2x.png');
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .section {
+    position: relative;
+    height: calc(100vh - 60px);
+    background-image: url('../../img/images/Background-element-main-page.png'),
+      url('../../img/images/Bottle-for-Sign-In-pc.png');
+    background-size: auto, 55%;
+    background-position: bottom 0px center, bottom 40px left -51px;
+    background-repeat: no-repeat;
+  }
+
+  .container {
+    width: 1440px;
+    padding: 140px 20px 20px 840px;
+  }
+
+  @media screen and (min-resolution: 192dpi),
+    screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 2dppx) {
+    .section {
+      background-image: url('../../img/images/Bottle-for-Sign-In-pc@2x.png'),
+        url('../../img/images/');
+    }
+  }
 }

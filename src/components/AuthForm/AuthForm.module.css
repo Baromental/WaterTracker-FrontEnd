@@ -1,3 +1,9 @@
+.mainWrap {
+  margin-right: auto;
+  margin-left: auto;
+  width: 280px;
+}
+
 .title {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
@@ -8,7 +14,6 @@
 
 .form {
   background-color: transparent;
-  width: 280px;
 }
 
 .wrap {
@@ -28,21 +33,28 @@
   border: 1px solid #d7e3ff;
   border-radius: 6px;
   padding: 12px 10px;
-  width: 280px;
+  width: 100%;
   height: 44px;
   background: #fff;
+  transition: color 0.3s ease-in-out;
 
   &:hover {
-    border-color: blueviolet;
+    outline: transparent;
+    color: #407bff;
+  }
+
+  &:active {
+    outline: transparent;
   }
 
   &::placeholder {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.25;
     color: #9ebbff;
   }
+}
+
+.error {
+  color: var(--red-color);
+  border: 1px solid var(--red-color);
 }
 
 .button {
@@ -57,6 +69,7 @@
   border: transparent;
   padding: 8px 30px;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  transition: box-shadow 0.3s ease-in-out;
 
   &:hover {
     box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
@@ -72,4 +85,22 @@
   font-size: 16px;
   line-height: 1.25;
   color: #407bff;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: #ff9d43;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mainWrap {
+    margin-left: 0;
+    width: 336px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .mainWrap {
+    width: 384px;
+  }
 }

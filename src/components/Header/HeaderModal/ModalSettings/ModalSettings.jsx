@@ -2,12 +2,13 @@ import React, { useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import s from './ModalSettings.module.css';
 import sprite from '../../../../img/icons/sprite.svg';
+import SettingModal from '../../../SettingModal/SettingModal';
 
 const modalRoot = document.querySelector('#modal');
 
 const ModalSettings = ({ onClose }) => {
   const handleKeyDown = useCallback(
-    (e) => {
+    e => {
       if (e.key === 'Escape') {
         onClose();
       }
@@ -23,7 +24,7 @@ const ModalSettings = ({ onClose }) => {
     };
   }, [handleKeyDown]);
 
-  const handleBackdropClick = (e) => {
+  const handleBackdropClick = e => {
     if (e.target === e.currentTarget) {
       onClose();
     }
@@ -37,7 +38,7 @@ const ModalSettings = ({ onClose }) => {
             <use href={`${sprite}#icon-cross`}></use>
           </svg>
         </button>
-        <h2>Settings</h2>
+        {<SettingModal />}
       </div>
     </div>,
     modalRoot
