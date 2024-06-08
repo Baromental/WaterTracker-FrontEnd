@@ -1,11 +1,11 @@
 import React, { useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
-import s from './HeaderModal.module.css';
+import s from './UserLogoModal.module.css';
 import sprite from '../../../img/icons/sprite.svg';
 
 const modalRoot = document.querySelector('#modal');
 
-const HeaderModal = ({ closeModal, onSettingsClick, onLogoutClick }) => {
+const UserLogoModal = ({ closeModal, onSettingsClick, onLogoutClick }) => {
   const handleKeyDown = useCallback(
     (e) => {
       if (e.key === 'Escape') {
@@ -17,7 +17,6 @@ const HeaderModal = ({ closeModal, onSettingsClick, onLogoutClick }) => {
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
-
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
@@ -52,4 +51,4 @@ const HeaderModal = ({ closeModal, onSettingsClick, onLogoutClick }) => {
   );
 };
 
-export default HeaderModal;
+export default UserLogoModal;
