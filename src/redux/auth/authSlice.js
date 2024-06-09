@@ -19,8 +19,6 @@ const initialState = {
   avatarURL:
     'https://cdn.pixabay.com/photo/2022/02/04/03/06/woman-6991826_1280.png',
   token: null,
-  loading: false,
-  error: null,
   isLoggedIn: false,
   isRefresh: false,
 };
@@ -37,7 +35,6 @@ const slice = createSlice({
     selectIsLoggedIn: state => state.isLoggedIn,
     selectToken: state => state.token,
     selectIsRefresh: state => state.isRefresh,
-    selectIsLoading: state => state.loading,
   },
   reducers: {
     logout: state => {
@@ -58,29 +55,14 @@ const slice = createSlice({
         state.waterRate = payload.waterRate;
         state.avatarURL = payload.avatarURL;
         state.token = payload.token;
-        state.loading = false;
         state.isLoggedIn = true;
-        state.loading = false;
         state.isRefresh = false;
       })
       .addCase(logoutThunk.fulfilled, state => {
         return initialState;
       })
-      // .addCase(registerThunk.rejected, (state, { payload }) => {
-      //   state.error = payload;
-      //   state.loading = false;
-      //   state.isRefresh = false;
-      //   toast.error(payload);
-      // })
-      // .addCase(loginThunk.rejected, (state, { payload }) => {
-      //   state.error = payload;
-      //   state.loading = false;
-      //   state.isRefresh = false;
-      //   toast.error(payload);
-      // })
       .addCase(updateAvatarThunk.fulfilled, (state, { payload }) => {
         state.avatarURL = payload.avatarURL;
-        state.loading = false;
         state.isRefresh = false;
         toast.success(`The avatar has been downloaded successfully`);
       })
@@ -89,7 +71,6 @@ const slice = createSlice({
         state.email = payload.email;
         state.password = payload.password;
         state.gender = payload.gender;
-        state.loading = false;
         state.isRefresh = false;
         toast.success(`Data changed successfully`);
       })
@@ -101,8 +82,6 @@ const slice = createSlice({
         state.waterRate = payload.waterRate;
         state.avatarURL = payload.avatarURL;
         state.token = payload.token;
-        state.loading = false;
-        state.loading = false;
         state.isRefresh = false;
         toast.success(`You have successfully registered`);
       })
@@ -114,42 +93,40 @@ const slice = createSlice({
         state.waterRate = payload.waterRate;
         state.avatarURL = payload.avatarURL;
         state.token = payload.token;
-        state.loading = false;
         state.isLoggedIn = true;
-        state.loading = false;
         state.isRefresh = false;
         toast.success(`Welcome, ${payload.name || payload.email}`);
-      })
-      .addMatcher(
-        isAnyOf(
-          registerThunk.pending,
-          loginThunk.pending,
-          refreshThunk.pending,
-          updateUserThunk.pending,
-          updateAvatarThunk.pending
-        ),
-        state => {
-          state.loading = true;
-          state.error = null;
-          state.isRefresh = true;
-        }
-      )
-      .addMatcher(
-        isAnyOf(
-          registerThunk.rejected,
-          loginThunk.rejected,
-          refreshThunk.rejected,
-          updateUserThunk.rejected,
-          updateAvatarThunk.rejected
-        ),
-        (state, { payload }) => {
-          state.error = payload;
-          state.loading = false;
-          state.isRefresh = false;
-          console.log(payload);
-          toast.error(payload);
-        }
-      );
+      });
+    // .addMatcher(
+    //   isAnyOf(
+    //     registerThunk.pending,
+    //     loginThunk.pending,
+    //     refreshThunk.pending,
+    //     updateUserThunk.pending,
+    //     updateAvatarThunk.pending
+    //   ),
+    //   state => {
+    //     state.loading = true;
+    //     state.error = null;
+    //     state.isRefresh = true;
+    //   }
+    // )
+    // .addMatcher(
+    //   isAnyOf(
+    //     registerThunk.rejected,
+    //     loginThunk.rejected,
+    //     refreshThunk.rejected,
+    //     updateUserThunk.rejected,
+    //     updateAvatarThunk.rejected
+    //   ),
+    //   (state, { payload }) => {
+    //     state.error = payload;
+    //     state.loading = false;
+    //     state.isRefresh = false;
+    //     console.log(payload);
+    //     toast.error(payload);
+    //   }
+    // );
   },
 });
 
@@ -163,6 +140,5 @@ export const {
   selectIsLoggedIn,
   selectToken,
   selectIsRefresh,
-  selectIsLoading,
 } = slice.selectors;
 export const { logout, setName } = slice.actions;
