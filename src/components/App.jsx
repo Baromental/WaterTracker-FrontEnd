@@ -12,10 +12,11 @@ import PublicRoutes from '../routes/PublicRoutes';
 import 'modern-normalize';
 import { selectIsLoading } from '../redux/loadingSlice';
 import Loader from './Loader/Loader';
+import { selectIsRefresh } from '../redux/auth/authSlice';
 
 const App = () => {
   const dispatch = useDispatch();
-  const isRefreshing = useSelector(selectIsLoading);
+  const isRefreshing = useSelector(selectIsRefresh);
 
   useEffect(() => {
     dispatch(refreshThunk());
