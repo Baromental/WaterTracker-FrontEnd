@@ -16,7 +16,6 @@ const MainPage = () => {
 
   useEffect(() => {
     dispatch(fetchWaterDataTodayThunk());
-    dispatch(fetchWaterDataMonthThunk());
   }, [dispatch]);
 
   return (
