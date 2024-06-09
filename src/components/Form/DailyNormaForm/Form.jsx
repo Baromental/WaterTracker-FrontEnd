@@ -1,15 +1,17 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectWaterRate } from '../../../redux/auth/authSlice';
 import { dailyNormaSchema } from '../../../Schemas/dailyNormaShema';
 import Button from '../../Button/Button';
 import s from './Form.module.css';
+import { updateWaterRateThunk } from '../../../redux/auth/operations';
+import { fetchWaterDataMonthThunk } from '../../../redux/water/operations';
 
-const Form = () => {
+const Form = ({ closeModal }) => {
   const prevWaterRate = useSelector(selectWaterRate);
-
+  const dispatch = useDispatch();
   const [userWaterRate, setUserWaterRate] = useState(0);
   const [calculatedWaterRate, setCalculatedWaterRate] = useState(0);
 
@@ -46,10 +48,14 @@ const Form = () => {
 
   const onSubmit = () => {
     if (userWaterRate > 0) {
-      console.log(userWaterRate);
+      dispatch(updateWaterRateThunk({ waterRate: userWaterRate }));
+      dispatch(fetchWaterDataMonthThunk());
     } else {
-      console.log(calculatedWaterRate);
+      dispatch(updateWaterRateThunk({ waterRate: calculatedWaterRate }));
+      dispatch(fetchWaterDataMonthThunk());
     }
+
+    closeModal();
   };
 
   const formData = watch();

@@ -27,7 +27,7 @@ const Calendar = () => {
   const handlePrevMonth = useCallback(() => {
     const date = new Date(
       year,
-      new Date(Date.parse(`${month} 1, ${year}`)).getMonth() - 1,
+      new Date(`${month} 1, ${year}`).getMonth() - 1,
       1
     );
     setYear(date.getFullYear());
@@ -37,7 +37,7 @@ const Calendar = () => {
   const handleNextMonth = useCallback(() => {
     const date = new Date(
       year,
-      new Date(Date.parse(`${month} 1, ${year}`)).getMonth() + 1,
+      new Date(`${month} 1, ${year}`).getMonth() + 1,
       1
     );
     setYear(date.getFullYear());
@@ -47,8 +47,11 @@ const Calendar = () => {
   const isCurrentMonthOrLater = useMemo(() => {
     return (
       (year === currentYear &&
-        new Date(Date.parse(`${month} 1, ${year}`)).getMonth() >=
-          new Date().getMonth()) ||
+        new Date(
+          year,
+          new Date(`${month} 1, ${year}`).getMonth(),
+          1
+        ).getMonth() >= new Date().getMonth()) ||
       year > currentYear
     );
   }, [year, month, currentYear]);

@@ -8,6 +8,7 @@ import {
   registerThunk,
   updateAvatarThunk,
   updateUserThunk,
+  updateWaterRateThunk,
 } from './operations';
 // https://cdn.pixabay.com/photo/2022/02/04/03/06/woman-6991826_1280.png
 const initialState = {
@@ -93,6 +94,10 @@ const slice = createSlice({
         state.isRefresh = false;
         toast.success(`Data changed successfully`);
       })
+      .addCase(updateWaterRateThunk.fulfilled, (state, { payload }) => {
+        state.waterRate = payload.waterRate;
+        toast.success(`Daily norma updated successfully`);
+      })
       .addCase(registerThunk.fulfilled, (state, { payload }) => {
         state.name = payload.name;
         state.email = payload.email;
@@ -126,7 +131,8 @@ const slice = createSlice({
           loginThunk.pending,
           refreshThunk.pending,
           updateUserThunk.pending,
-          updateAvatarThunk.pending
+          updateAvatarThunk.pending,
+          updateWaterRateThunk.pending
         ),
         state => {
           state.loading = true;
@@ -140,7 +146,8 @@ const slice = createSlice({
           loginThunk.rejected,
           refreshThunk.rejected,
           updateUserThunk.rejected,
-          updateAvatarThunk.rejected
+          updateAvatarThunk.rejected,
+          updateWaterRateThunk.rejected
         ),
         (state, { payload }) => {
           state.error = payload;
