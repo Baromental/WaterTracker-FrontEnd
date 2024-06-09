@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNotesPerMonth } from '../../redux/water/waterSlice';
+import { monthNames } from '../../../constans/monthNames';
 import { fetchWaterDataMonthThunk } from '../../redux/water/operations';
 import CalendarItem from './CalendarItem/CalendarItem';
 import { GoChevronLeft } from 'react-icons/go';
@@ -12,43 +13,31 @@ const Calendar = () => {
   const notesPerMonth = useSelector(selectNotesPerMonth);
 
   const currentYear = useMemo(() => new Date().getFullYear(), []);
-  const currentMonth = useMemo(
-    () => new Date().toLocaleString('default', { month: 'long' }).toLowerCase(),
-    []
-  );
+  const currentMonthIndex = useMemo(() => new Date().getMonth(), []);
 
   const [year, setYear] = useState(currentYear);
-  const [month, setMonth] = useState(currentMonth);
+  const [month, setMonth] = useState(monthNames[currentMonthIndex]);
 
   useEffect(() => {
     dispatch(fetchWaterDataMonthThunk({ year, month }));
   }, [dispatch, year, month]);
 
   const handlePrevMonth = useCallback(() => {
-    const date = new Date(
-      year,
-      new Date(Date.parse(`${month} 1, ${year}`)).getMonth() - 1,
-      1
-    );
+    const date = new Date(year, monthNames.indexOf(month) - 1, 1);
     setYear(date.getFullYear());
-    setMonth(date.toLocaleString('default', { month: 'long' }).toLowerCase());
+    setMonth(monthNames[date.getMonth()]);
   }, [year, month]);
 
   const handleNextMonth = useCallback(() => {
-    const date = new Date(
-      year,
-      new Date(Date.parse(`${month} 1, ${year}`)).getMonth() + 1,
-      1
-    );
+    const date = new Date(year, monthNames.indexOf(month) + 1, 1);
     setYear(date.getFullYear());
-    setMonth(date.toLocaleString('default', { month: 'long' }).toLowerCase());
+    setMonth(monthNames[date.getMonth()]);
   }, [year, month]);
 
   const isCurrentMonthOrLater = useMemo(() => {
+    const currentMonth = new Date().getMonth();
     return (
-      (year === currentYear &&
-        new Date(Date.parse(`${month} 1, ${year}`)).getMonth() >=
-          new Date().getMonth()) ||
+      (year === currentYear && monthNames.indexOf(month) >= currentMonth) ||
       year > currentYear
     );
   }, [year, month, currentYear]);

@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { authApi, setToken, removeToken } from '../../axiosConfig/authAPI.js';
+import { fetchWaterDataMonthThunk } from '../water/operations.js';
 
 export const registerThunk = createAsyncThunk(
   'register',
@@ -87,6 +88,19 @@ export const updateAvatarThunk = createAsyncThunk(
       });
       console.log(response);
       return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const updateWaterRateThunk = createAsyncThunk(
+  'updateWaterRate',
+  async (body, thunkAPI) => {
+    try {
+      const { data } = await authApi.patch('user/waterRate', body);
+      thunkAPI.dispatch(fetchWaterDataMonthThunk());
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
     }

@@ -8,6 +8,7 @@ import {
   registerThunk,
   updateAvatarThunk,
   updateUserThunk,
+  updateWaterRateThunk,
 } from './operations';
 
 const initialState = {
@@ -72,6 +73,10 @@ const slice = createSlice({
         state.gender = payload.gender;
         state.isRefresh = false;
         toast.success(`Data changed successfully`);
+      })
+      .addCase(updateWaterRateThunk.fulfilled, (state, { payload }) => {
+        state.waterRate = payload.waterRate;
+        toast.success(`Daily norma updated successfully`);
       })
       .addCase(registerThunk.fulfilled, (state, { payload }) => {
         state.name = payload.name;

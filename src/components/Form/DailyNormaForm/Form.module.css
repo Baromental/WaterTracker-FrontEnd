@@ -141,3 +141,9 @@
     border: 1px solid var(--red-color);
     color: var(--red-color);
 }
+
+.validation_error_waterRate {
+    color: var(--red-color);
+    font-size: 14px;
+    line-height: 1.28571;
+}
