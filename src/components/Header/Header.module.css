@@ -1,11 +1,15 @@
-.header{
+.header {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-.userAuthButton{
+.logoLink {
+    cursor: pointer;
+}
+
+.userAuthButton {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -13,42 +17,62 @@
     color: var(--blue-color);
     background-color: transparent;
     border: none;
-
 }
 
-.iconUser{
-    fill:none;
+.userLogoButton {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.userName {
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--black-color);
+}
+
+.userAvatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+.iconUser {
+    fill: none;
     stroke: var(--black-color);
 }
 
-.iconDown{
+.iconDown {
     fill: var(--blue-color);
 }
 
 @media screen and (max-width: 768px) {
-    .header{
+    .header {
         padding: 8px 20px 0px 20px;
     }
 
-    .userAuthButton{
+    .userAuthButton {
         font-size: var(--primarily-font-size);
         line-height: 20px;
     }
 }
 
 @media screen and (min-width: 768px) {
-    .header{
+    .header {
         padding: 16px 34px 0px 32px;
     }
 
-    .userAuthButton{
+    .userAuthButton {
         font-size: var(--secondary-font-size);
         line-height: 24px;
-    }  
+    }
 }
 
 @media screen and (min-width: 1440px) {
-    .header{
+    .header {
         padding: 12px 112px 0px 112px;
-    } 
+    }
 }
