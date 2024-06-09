@@ -10,6 +10,7 @@ const InputField = ({
   placeholder,
   register,
   onChange,
+  error,
 }) => {
   return (
     <div className={s.wrap}>
@@ -27,6 +28,7 @@ const InputField = ({
         onChange={onChange}
         autoComplete="off"
       />
+      {error && <span className={s.error}>{error}</span>}
     </div>
   );
 };
