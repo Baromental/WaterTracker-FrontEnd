@@ -49,10 +49,8 @@ const Form = ({ closeModal }) => {
   const onSubmit = () => {
     if (userWaterRate > 0) {
       dispatch(updateWaterRateThunk({ waterRate: userWaterRate }));
-      dispatch(fetchWaterDataMonthThunk());
     } else {
       dispatch(updateWaterRateThunk({ waterRate: calculatedWaterRate }));
-      dispatch(fetchWaterDataMonthThunk());
     }
 
     closeModal();

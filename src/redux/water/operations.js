@@ -1,11 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { authApi } from '../../axiosConfig/authAPI.js';
+import { monthNames } from '../../../constans/monthNames.js';
 
 export const addWaterThunk = createAsyncThunk(
   'addWater',
   async (waterData, thunkAPI) => {
     try {
       const { data } = await authApi.post('water', waterData);
+      thunkAPI.dispatch(fetchWaterDataMonthThunk());
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
@@ -19,6 +21,7 @@ export const editWaterThunk = createAsyncThunk(
     const { amount, date, id } = waterData;
     try {
       const { data } = await authApi.patch(`water/${id}`, { amount, date });
+      thunkAPI.dispatch(fetchWaterDataMonthThunk());
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
@@ -31,6 +34,7 @@ export const deleteWaterThunk = createAsyncThunk(
   async (waterData, thunkAPI) => {
     try {
       const { data } = await authApi.delete(`water/${waterData.id}`);
+      thunkAPI.dispatch(fetchWaterDataMonthThunk());
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
@@ -55,9 +59,7 @@ export const fetchWaterDataMonthThunk = createAsyncThunk(
   async (
     {
       year = new Date().getFullYear(),
-      month = new Date()
-        .toLocaleString('default', { month: 'long' })
-        .toLowerCase(),
+      month = monthNames[new Date().getMonth()],
     } = {},
     thunkAPI
   ) => {

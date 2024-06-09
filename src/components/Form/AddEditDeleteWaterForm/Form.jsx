@@ -48,7 +48,6 @@ const Form = ({ type, amount, date, id, closeModal }) => {
       default:
         break;
     }
-    dispatch(fetchWaterDataMonthThunk());
     closeModal();
   };
 

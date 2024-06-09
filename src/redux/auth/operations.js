@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { authApi, setToken, removeToken } from '../../axiosConfig/authAPI.js';
+import { fetchWaterDataMonthThunk } from '../water/operations.js';
 
 export const registerThunk = createAsyncThunk(
   'register',
@@ -98,6 +99,7 @@ export const updateWaterRateThunk = createAsyncThunk(
   async (body, thunkAPI) => {
     try {
       const { data } = await authApi.patch('user/waterRate', body);
+      thunkAPI.dispatch(fetchWaterDataMonthThunk());
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);

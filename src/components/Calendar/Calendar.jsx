@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNotesPerMonth } from '../../redux/water/waterSlice';
+import { monthNames } from '../../../constans/monthNames';
 import { fetchWaterDataMonthThunk } from '../../redux/water/operations';
 import CalendarItem from './CalendarItem/CalendarItem';
 import { GoChevronLeft } from 'react-icons/go';
@@ -13,21 +14,6 @@ const Calendar = () => {
 
   const currentYear = useMemo(() => new Date().getFullYear(), []);
   const currentMonthIndex = useMemo(() => new Date().getMonth(), []);
-
-  const monthNames = [
-    'january',
-    'february',
-    'march',
-    'april',
-    'may',
-    'june',
-    'july',
-    'august',
-    'september',
-    'october',
-    'november',
-    'december',
-  ];
 
   const [year, setYear] = useState(currentYear);
   const [month, setMonth] = useState(monthNames[currentMonthIndex]);
