@@ -1,23 +1,26 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-
-import s from './SettingModal.module.css';
-import InputField from './InputField/InputField';
-import RadioButton from './RadioButton/RadioButton';
-import PasswordField from './PasswordField/PasswordField';
 import { useDispatch, useSelector } from 'react-redux';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+import RadioButton from './RadioButton/RadioButton';
+import InputField from '../Inputs/InputField/InputField';
+import PasswordField from '../Inputs/PasswordField/PasswordField';
+import ImageField from '../Inputs/ImageField/ImageField';
+
 import {
   selectAvatarURL,
   selectEmail,
   selectGender,
-  selectIsLoggedIn,
   selectName,
 } from '../../redux/auth/authSlice';
 import {
   updateAvatarThunk,
   updateUserThunk,
 } from '../../redux/auth/operations';
-import ImageField from './ImageField/ImageField';
+
+import { settingsSchema } from '../../Schemas/settingsSchema';
+import s from './SettingModal.module.css';
 
 const SettingModal = () => {
   const dispatch = useDispatch();
@@ -30,9 +33,9 @@ const SettingModal = () => {
   const {
     register,
     handleSubmit,
+    watch,
     setValue,
     setError,
-    clearErrors,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -40,7 +43,10 @@ const SettingModal = () => {
       email,
       gender,
     },
+    // resolver: yupResolver(settingsSchema),
   });
+
+  const currentGender = watch('gender');
 
   useEffect(() => {
     setValue('name', name);
@@ -49,7 +55,6 @@ const SettingModal = () => {
   }, [name, email, gender, setValue]);
 
   const submit = data => {
-    console.log(data);
     const { email, name, gender, newPassword, password, repeatNewPass } = data;
 
     if (newPassword && password === newPassword) {
@@ -70,15 +75,11 @@ const SettingModal = () => {
 
     const updateData = { email, name, gender };
 
-    if (newPassword === password) {
-    }
-
     if (password && newPassword && newPassword === repeatNewPass) {
       updateData.password = password;
       updateData.newPassword = newPassword;
     }
 
-    console.log(updateData);
     dispatch(updateUserThunk(updateData));
   };
 
@@ -117,7 +118,7 @@ const SettingModal = () => {
                 label="Woman"
                 register={register}
                 onChange={() => setValue('gender', 'woman')}
-                defaultChecked={gender === 'woman'}
+                defaultChecked={currentGender === 'woman'}
               />
               <RadioButton
                 id="man"
@@ -126,23 +127,27 @@ const SettingModal = () => {
                 label="Man"
                 register={register}
                 onChange={() => setValue('gender', 'man')}
-                defaultChecked={gender === 'man'}
+                defaultChecked={currentGender === 'man'}
               />
             </fieldset>
             <div className={s.wrapInfo}>
               <InputField
+                id="name"
                 name="name"
                 type="text"
                 label="Your name"
                 placeholder="Enter your name"
                 register={register}
+                error={errors.name?.message}
               />
               <InputField
+                id="email"
                 name="email"
                 type="email"
                 label="E-mail"
                 placeholder="Enter your e-mail"
                 register={register}
+                error={errors.email?.message}
               />
             </div>
           </div>
@@ -151,7 +156,6 @@ const SettingModal = () => {
             <legend className={s.legend}>Password</legend>
             <PasswordField
               name="password"
-              type="password"
               label="Outdated password:"
               placeholder="Password"
               register={register}
@@ -159,7 +163,6 @@ const SettingModal = () => {
             />
             <PasswordField
               name="newPassword"
-              type="password"
               label="New Password:"
               placeholder="Password"
               register={register}
@@ -167,7 +170,6 @@ const SettingModal = () => {
             />
             <PasswordField
               name="repeatNewPass"
-              type="password"
               label="Repeat new password:"
               placeholder="Password"
               register={register}

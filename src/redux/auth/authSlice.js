@@ -9,15 +9,14 @@ import {
   updateAvatarThunk,
   updateUserThunk,
 } from './operations';
-// https://cdn.pixabay.com/photo/2022/02/04/03/06/woman-6991826_1280.png
+
 const initialState = {
-  name: 'nata',
-  email: 'asdfghgfd@bnm.jh',
+  name: '',
+  email: '',
   password: '',
-  gender: 'woman',
+  gender: '',
   waterRate: 1.5,
-  avatarURL:
-    'https://cdn.pixabay.com/photo/2022/02/04/03/06/woman-6991826_1280.png',
+  avatarURL: '',
   token: null,
   isLoggedIn: false,
   isRefresh: false,
