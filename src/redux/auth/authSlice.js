@@ -101,36 +101,6 @@ const slice = createSlice({
         state.isRefresh = false;
         toast.success(`Welcome, ${payload.name || payload.email}`);
       });
-    // .addMatcher(
-    //   isAnyOf(
-    //     registerThunk.pending,
-    //     loginThunk.pending,
-    //     refreshThunk.pending,
-    //     updateUserThunk.pending,
-    //     updateAvatarThunk.pending
-    //   ),
-    //   state => {
-    //     state.loading = true;
-    //     state.error = null;
-    //     state.isRefresh = true;
-    //   }
-    // )
-    // .addMatcher(
-    //   isAnyOf(
-    //     registerThunk.rejected,
-    //     loginThunk.rejected,
-    //     refreshThunk.rejected,
-    //     updateUserThunk.rejected,
-    //     updateAvatarThunk.rejected
-    //   ),
-    //   (state, { payload }) => {
-    //     state.error = payload;
-    //     state.loading = false;
-    //     state.isRefresh = false;
-    //     console.log(payload);
-    //     toast.error(payload);
-    //   }
-    // );
   },
 });
 
