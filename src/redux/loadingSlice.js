@@ -8,7 +8,7 @@ const slice = createSlice({
   selectors: {
     selectIsLoading: state => state.loading,
   },
-
+  reducers: {},
   extraReducers: builder => {
     builder
       .addMatcher(
@@ -18,13 +18,9 @@ const slice = createSlice({
         }
       )
       .addMatcher(
-        action => action.type.endsWith('/rejected'),
-        state => {
-          state.loading = false;
-        }
-      )
-      .addMatcher(
-        action => action.type.endsWith('/fulfilled'),
+        action =>
+          action.type.endsWith('/rejected') ||
+          action.type.endsWith('/fulfilled'),
         state => {
           state.loading = false;
         }
@@ -33,4 +29,5 @@ const slice = createSlice({
 });
 
 export const loadingReducer = slice.reducer;
+
 export const { selectIsLoading } = slice.selectors;
