@@ -15,5 +15,6 @@ export const dailyNormaSchema = yup.object().shape({
   waterRate: yup
     .number()
     .min(0, 'Planned water daily norma must be positive')
+    .typeError('Planned water daily norma must be a number')
     .optional(),
 });

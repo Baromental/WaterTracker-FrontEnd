@@ -92,3 +92,15 @@ export const updateAvatarThunk = createAsyncThunk(
     }
   }
 );
+
+export const updateWaterRateThunk = createAsyncThunk(
+  'updateWaterRate',
+  async (body, thunkAPI) => {
+    try {
+      const { data } = await authApi.patch('user/waterRate', body);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
