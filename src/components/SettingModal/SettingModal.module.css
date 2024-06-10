@@ -1,10 +1,9 @@
 .title {
   margin-bottom: 24px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   font-size: 26px;
   line-height: 1.23077;
-  color: #2f2f2f;
+  color: var(--black-color);
 }
 
 .form {
@@ -55,11 +54,10 @@
 
 .legend {
   margin-bottom: 12px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   font-size: 18px;
   line-height: 1.11111;
-  color: #2f2f2f;
+  color: var(--black-color);
 }
 
 .button {
@@ -68,17 +66,16 @@
   width: 160px;
   height: 44px;
   border-radius: 10px;
-  background-color: #407bff;
+  background-color: var(--blue-color);
   margin-left: auto;
   border: transparent;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
   transition: box-shadow 0.3s ease-in-out;
 
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   font-size: 18px;
   line-height: 1.33333;
-  color: #fff;
+  color: var(--white-color);
 
   &:hover {
     box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);

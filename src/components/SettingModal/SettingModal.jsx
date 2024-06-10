@@ -33,7 +33,6 @@ const SettingModal = () => {
   const {
     register,
     handleSubmit,
-    watch,
     setValue,
     setError,
     formState: { errors },
@@ -41,12 +40,9 @@ const SettingModal = () => {
     defaultValues: {
       name,
       email,
-      gender,
+      gender: gender || 'woman',
     },
-    // resolver: yupResolver(settingsSchema),
   });
-
-  const currentGender = watch('gender');
 
   useEffect(() => {
     setValue('name', name);

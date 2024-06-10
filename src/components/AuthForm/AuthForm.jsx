@@ -1,12 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
 
-import s from './AuthForm.module.css';
 import PasswordField from './PasswordField/PasswordField';
 import InputField from './InputField/InputField';
-import { yupResolver } from '@hookform/resolvers/yup';
+
+import s from './AuthForm.module.css';
 
 export const AuthForm = ({ formType, onSubmit, schema }) => {
   const {
