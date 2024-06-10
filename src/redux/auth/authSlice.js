@@ -58,6 +58,12 @@ const slice = createSlice({
         state.isLoggedIn = true;
         state.isRefresh = false;
       })
+      .addCase(refreshThunk.pending, (state, { payload }) => {
+        state.isRefresh = true;
+      })
+      .addCase(refreshThunk.rejected, (state, { payload }) => {
+        state.isRefresh = false;
+      })
       .addCase(logoutThunk.fulfilled, state => {
         return initialState;
       })
