@@ -12,21 +12,26 @@ import PublicRoutes from '../routes/PublicRoutes';
 import 'modern-normalize';
 import { selectIsLoading } from '../redux/loadingSlice';
 import Loader from './Loader/Loader';
-import { selectIsRefresh } from '../redux/auth/authSlice';
+import { selectIsLoggedIn, selectIsRefresh } from '../redux/auth/authSlice';
+import { MainLoader } from './MainLoader/MainLoader';
 
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefresh);
+  const loggedIn = useSelector(selectIsLoggedIn);
+  const loading = useSelector(selectIsLoading);
 
   useEffect(() => {
-    dispatch(refreshThunk());
+    if (loggedIn) {
+      dispatch(refreshThunk());
+    }
   }, [dispatch]);
 
   return isRefreshing ? (
-    <Loader />
+    <MainLoader />
   ) : (
     <>
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={<MainLoader />}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<WelcomePage />} />

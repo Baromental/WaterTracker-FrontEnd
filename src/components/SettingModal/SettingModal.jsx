@@ -118,7 +118,7 @@ const SettingModal = () => {
                 label="Woman"
                 register={register}
                 onChange={() => setValue('gender', 'woman')}
-                defaultChecked={currentGender === 'woman'}
+                defaultChecked="true"
               />
               <RadioButton
                 id="man"
@@ -127,7 +127,7 @@ const SettingModal = () => {
                 label="Man"
                 register={register}
                 onChange={() => setValue('gender', 'man')}
-                defaultChecked={currentGender === 'man'}
+                defaultChecked="false"
               />
             </fieldset>
             <div className={s.wrapInfo}>
