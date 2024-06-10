@@ -1,16 +1,13 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectWaterRate } from '../../../redux/auth/authSlice';
+import { useDispatch } from 'react-redux';
+import { updateWaterRateThunk } from '../../../redux/auth/operations';
 import { dailyNormaSchema } from '../../../Schemas/dailyNormaShema';
 import Button from '../../Button/Button';
 import s from './Form.module.css';
-import { updateWaterRateThunk } from '../../../redux/auth/operations';
-import { fetchWaterDataMonthThunk } from '../../../redux/water/operations';
 
 const Form = ({ closeModal }) => {
-  const prevWaterRate = useSelector(selectWaterRate);
   const dispatch = useDispatch();
   const [userWaterRate, setUserWaterRate] = useState(0);
   const [calculatedWaterRate, setCalculatedWaterRate] = useState(0);
@@ -157,11 +154,7 @@ const Form = ({ closeModal }) => {
             The required amount of water in liters per day:
           </label>
           <output id="requiredWater" className={s.required_water}>
-            {userWaterRate > 0
-              ? `${userWaterRate} L`
-              : calculatedWaterRate > 0
-              ? `${calculatedWaterRate} L`
-              : `${prevWaterRate} L`}
+            {`${calculatedWaterRate || 1.5} L`}
           </output>
         </div>
       </div>
