@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const authApi = axios.create({
-  baseURL: 'http://localhost:3000/api/',
+  baseURL: 'https://water-tracker-backend-oo69.onrender.com/api/',
 });
 
 export const setToken = token => {
