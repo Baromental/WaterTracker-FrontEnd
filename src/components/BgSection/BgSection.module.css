@@ -9,9 +9,11 @@
   width: 320px;
   padding: 24px 20px;
   background-image: url('../../img/images/Background-element-sign-in-phone.png'),
-    url('../../img/images/Bottle\ Sign\ InBottle-sign-in-phone.png');
+    url('../../img/images/Bottle-Sign-InBottle-sign-in-phone.png');
   background-repeat: no-repeat;
   background-position: top 0px center, top 450px center;
+  min-height: 100vh;
+
 }
 
 @media screen and (min-resolution: 192dpi),
@@ -19,7 +21,7 @@
   screen and (min-resolution: 2dppx) {
   .container {
     background-image: url('../../img/images/Background-element-sign-in-phone@2x.png'),
-      url('../../img/images/Bottle\ Sign\ InBottle-sign-in-phone@2x.png');
+      url('../../img/images/Bottle-Sign-InBottle-sign-in-phone@2x.png');
   }
 }
 
