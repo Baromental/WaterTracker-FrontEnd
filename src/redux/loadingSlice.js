@@ -1,13 +1,10 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { loginThunk, registerThunk } from './auth/operations';
-import { toast } from 'react-toastify';
+import { createSlice } from '@reduxjs/toolkit';
 
 const slice = createSlice({
   name: 'loading',
   initialState: { loading: false },
   selectors: {
     selectIsLoading: state => state.loading,
-    selectIsRefresh: state => state.isRefresh,
   },
   reducers: {},
   extraReducers: builder => {
@@ -16,7 +13,6 @@ const slice = createSlice({
         action => action.type.endsWith('/pending'),
         state => {
           state.loading = true;
-          // state.isRefresh = true;
         }
       )
       .addMatcher(
@@ -25,7 +21,6 @@ const slice = createSlice({
           action.type.endsWith('/fulfilled'),
         state => {
           state.loading = false;
-          // state.isRefresh = false;
         }
       );
   },
@@ -33,4 +28,4 @@ const slice = createSlice({
 
 export const loadingReducer = slice.reducer;
 
-export const { selectIsLoading, selectIsRefresh } = slice.selectors;
+export const { selectIsLoading } = slice.selectors;

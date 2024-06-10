@@ -8,7 +8,7 @@
   font-weight: var(--font-weight-medium);
   font-size: 26px;
   line-height: 1.2;
-  color: #2f2f2f;
+  color: var(--black-color);
 }
 
 .form {
@@ -23,7 +23,7 @@
   font-weight: var(--font-weight-regular);
   font-size: var(--secondary-font-size);
   line-height: 1.33333;
-  color: #2f2f2f;
+  color: var(--black-color);
 }
 
 .input {
@@ -33,12 +33,12 @@
   padding: 12px 10px;
   width: 100%;
   height: 44px;
-  background: #fff;
+  background: var(--white-color);
   transition: color 0.3s ease-in-out;
 
   &:hover {
     outline: transparent;
-    color: #407bff;
+    color: var(--blue-color);
   }
 
   &:active {
@@ -61,7 +61,7 @@
   width: 100%;
   height: 36px;
   border-radius: 10px;
-  background-color: #407bff;
+  background-color: var(--blue-color);
   margin-right: auto;
   margin-left: auto;
   border: transparent;
@@ -69,11 +69,10 @@
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
   transition: box-shadow 0.3s ease-in-out;
 
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   font-size: 18px;
   line-height: 1.33333;
-  color: #fff;
+  color: var(--white-color);
 
   &:hover {
     box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
@@ -84,11 +83,10 @@
 }
 
 .link {
-  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
-  color: #407bff;
+  color: var(--blue-color);
   transition: color 0.3s ease-in-out;
 
   &:hover {
