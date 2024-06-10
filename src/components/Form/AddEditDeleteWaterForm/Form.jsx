@@ -8,7 +8,6 @@ import {
   addWaterThunk,
   deleteWaterThunk,
   editWaterThunk,
-  fetchWaterDataMonthThunk,
 } from '../../../redux/water/operations';
 import Button from '../../Button/Button';
 import AmountDisplay from '../AmountDisplay/AmountDisplay';
