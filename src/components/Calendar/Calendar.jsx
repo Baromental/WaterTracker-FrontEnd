@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNotesPerMonth } from '../../redux/water/waterSlice';
-import { monthNames } from '../../../constans/monthNames';
+import { monthNames } from '../../constans/monthNames';
 import { fetchWaterDataMonthThunk } from '../../redux/water/operations';
 import CalendarItem from './CalendarItem/CalendarItem';
 import { GoChevronLeft } from 'react-icons/go';
