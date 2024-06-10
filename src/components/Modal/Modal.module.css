@@ -32,7 +32,7 @@
     right: 12px;
     background-color: transparent;
     border: none;
-    cursor: pointer;
+    cursor: url('../../img/pointer.png'), pointer;
     z-index: 1;
 }
 

@@ -36,7 +36,7 @@ const UserLogoModal = ({ closeModal, onSettingsClick, onLogoutClick }) => {
             <svg width="16" height="16" className={s.icon}>
               <use href={`${sprite}#icon-gear`} />
             </svg>
-            Settings
+            Setting
           </button>
           <button className={s.menuItem} onClick={onLogoutClick}>
             <svg width="16" height="16" className={s.icon}>

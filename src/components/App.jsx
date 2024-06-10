@@ -1,5 +1,5 @@
 import React, { useEffect, Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshThunk } from '../redux/auth/operations';
 import Layout from '../components/Layout';
@@ -25,12 +25,19 @@ const App = () => {
   const loggedIn = useSelector(selectIsLoggedIn);
   const loading = useSelector(selectIsLoading);
   const token = useSelector(selectToken);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (token) {
       dispatch(refreshThunk());
     }
-  }, [dispatch]);
+  }, [dispatch, token]);
+
+  useEffect(() => {
+    if (loggedIn) {
+      navigate('/home');
+    }
+  }, [loggedIn, navigate]);
 
   return isRefreshing ? (
     <Loader />
