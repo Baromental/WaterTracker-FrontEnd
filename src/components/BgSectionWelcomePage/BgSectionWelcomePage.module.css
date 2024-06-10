@@ -1,19 +1,21 @@
 .welcomePageBackground {
-    position: relative;
-    background-image: url('../../img/images/Background-element-main-page.png'), url('../../img/images/background-main-page-phone.png');
-    background-size: auto, cover;
-    background-position: bottom 0px center, center;
-    background-repeat: no-repeat;
-  }
-  
-  .container {
-    margin-left: auto;
-    margin-right: auto;
-  }
+  position: relative;
+  background-image: url('../../img/images/Background-element-main-page.png'), url('../../img/images/background-main-page-phone.png');
+  background-size: auto, cover;
+  background-position: bottom 0px center, center;
+  background-repeat: no-repeat;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
   
   @media screen and (max-width: 768px) {
     .welcomePageBackground {
-         min-height: 100vh;
+      min-height: 100vh;
       background-image: url('../../img/images/Background-element-main-page.png'), url('../../img/images/background-main-page-phone.png');
     }
   
@@ -24,11 +26,15 @@
         background-image: url('../../img/images/Background-element-main-page@2x.png'), url('../../img/images/background-main-page-phone@2x.png');
       }
     }
+
+    .container {
+      max-width: 320px;
+    }
   }
   
   @media screen and (min-width: 768px) {
     .welcomePageBackground {
-        height: calc(100vh - 60px);
+      height: calc(100vh - 60px);
       background-image: url('../../img/images/Background-element-main-page.png'), url('../../img/images/background-main-page-tab.png');
     }
   
@@ -38,6 +44,10 @@
       .welcomePageBackground {
         background-image: url('../../img/images/Background-element-main-page@2x.png'), url('../../img/images/background-main-page-tab@2x.png');
       }
+    }
+
+    .container {
+      max-width: 768px;
     }
   }
   
@@ -55,6 +65,10 @@
       .welcomePageBackground {
         background-image: url('../../img/images/Background-element-main-page@2x.png'), url('../../img/images/background-main-page-pc@2x.png');
       }
+    }
+
+    .container {
+      max-width: 1440px;
     }
   }
   
