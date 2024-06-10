@@ -1,19 +1,18 @@
 .section {
   position: relative;
-  /* height: calc(100vh - 80px); */
 }
 
 .container {
   margin-left: auto;
   margin-right: auto;
+  height: 680px;
   width: 320px;
   padding: 24px 20px;
   background-image: url('../../img/images/Background-element-sign-in-phone.png'),
-    url('../../img/images/Bottle-Sign-InBottle-sign-in-phone.png');
+    url('../../img/images/BottleSignInBottle-sign-in-phone.png');
   background-repeat: no-repeat;
-  background-position: top 0px center, top 450px center;
-  min-height: 100vh;
-
+  background-position: top 52px center, bottom 20px center;
+  background-size: auto auto;
 }
 
 @media screen and (min-resolution: 192dpi),
@@ -21,7 +20,7 @@
   screen and (min-resolution: 2dppx) {
   .container {
     background-image: url('../../img/images/Background-element-sign-in-phone@2x.png'),
-      url('../../img/images/Bottle-Sign-InBottle-sign-in-phone@2x.png');
+      url('../../img/images/BottleSignInBottle-sign-in-phone@2x.png');
   }
 }
 
