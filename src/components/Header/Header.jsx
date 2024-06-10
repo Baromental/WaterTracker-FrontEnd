@@ -71,7 +71,7 @@ const Header = () => {
                     <use href={`${sprite}#icon-user`} />
                   </svg>
                 )}
-                <svg width="28" height="28" className={s.iconDown}>
+                <svg width="16" height="16" className={s.iconDown}>
                   <use href={`${sprite}#icon-down`} />
                 </svg>
               </button>
