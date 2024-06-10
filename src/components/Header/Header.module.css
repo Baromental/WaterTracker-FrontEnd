@@ -6,7 +6,7 @@
 }
 
 .logoLink {
-    cursor: pointer;
+    cursor: url('../../img/pointer.png'), pointer;
 }
 
 .userAuthButton {
@@ -25,7 +25,7 @@
     gap: 4px;
     background-color: transparent;
     border: none;
-    cursor: pointer;
+    cursor: url('../../img/pointer.png'), pointer;
 }
 
 .userName {

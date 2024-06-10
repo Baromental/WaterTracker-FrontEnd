@@ -18,14 +18,15 @@
   align-items: center;
   width: 118px;
   padding: 16px;
+  gap: 16px;
 }
 
 .menuItem {
   width: 100%;
-  padding: 10px 0;
+  padding: 1px 0;
   border: none;
   background: none;
-  cursor: pointer;
+  cursor: url('../../../img/pointer.png'), pointer;
   display: flex;
   align-items: center;
   gap: 8px;
