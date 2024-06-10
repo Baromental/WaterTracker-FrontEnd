@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { waterSchema } from '../../../schemas/waterShema';
+import { waterSchema } from '../../../Schemas/waterShema.js';
 import formatDate from '../../../helpers/formatDate';
 import {
   addWaterThunk,
