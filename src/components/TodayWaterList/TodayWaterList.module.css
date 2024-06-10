@@ -107,18 +107,4 @@
     position: relative;
     width: 4px;
     right: -3px;
-    position: relative;
-}
-
-.scroll_track {
-    position: absolute;
-    right: 3px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2px;
-    height: 90%;
-    background-color: #d7e3ff;
-    border-radius: 8px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
 }
