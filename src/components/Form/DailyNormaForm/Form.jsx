@@ -1,16 +1,18 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CustomScroll } from 'react-custom-scroll';
 import { updateWaterRateThunk } from '../../../redux/auth/operations';
+import { selectWaterRate } from '../../../redux/auth/authSlice';
 import { dailyNormaSchema } from '../../../Schemas/dailyNormaShema';
 import Button from '../../Button/Button';
 import s from './Form.module.css';
 
 const Form = ({ closeModal }) => {
   const dispatch = useDispatch();
-  const [userWaterRate, setUserWaterRate] = useState(0);
+  const previousWaterRate = useSelector(selectWaterRate);
+  const [userWaterRate, setUserWaterRate] = useState(previousWaterRate || 1.5);
   const [calculatedWaterRate, setCalculatedWaterRate] = useState(0);
 
   const {
@@ -23,7 +25,7 @@ const Form = ({ closeModal }) => {
     defaultValues: {
       weight: 0,
       activity: 0,
-      waterRate: 0,
+      waterRate: userWaterRate,
     },
   });
 
@@ -44,13 +46,21 @@ const Form = ({ closeModal }) => {
     setUserWaterRate(e.target.value);
   };
 
-  const onSubmit = () => {
-    if (userWaterRate > 0) {
-      dispatch(updateWaterRateThunk({ waterRate: userWaterRate }));
-    } else {
-      dispatch(updateWaterRateThunk({ waterRate: calculatedWaterRate }));
+  const onSubmit = data => {
+    const currentWaterRate =
+      calculatedWaterRate > 0 ? calculatedWaterRate : userWaterRate;
+
+    if (
+      data.weight === 0 &&
+      data.activity === 0 &&
+      data.waterRate === previousWaterRate &&
+      currentWaterRate === previousWaterRate
+    ) {
+      closeModal();
+      return;
     }
 
+    dispatch(updateWaterRateThunk({ waterRate: currentWaterRate }));
     closeModal();
   };
 
@@ -160,7 +170,7 @@ const Form = ({ closeModal }) => {
                 The required amount of water in liters per day:
               </label>
               <output id="requiredWater" className={s.required_water}>
-                {`${calculatedWaterRate || 1.5} L`}
+                {`${calculatedWaterRate || 0} L`}
               </output>
             </div>
           </div>
