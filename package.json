@@ -1,12 +1,11 @@
 {
-  "homepage": "https://baromental.github.io/watertracker-frontend/",
   "name": "watertracker-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/watertracker-frontend/",
+    "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
