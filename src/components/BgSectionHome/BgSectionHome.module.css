@@ -19,7 +19,7 @@
   screen and (min-resolution: 2dppx) {
   .container {
     background-image: url('../../img/images/Bottle-home-screen-phone@2x.png'),
-      url('../../img/images/background-main-page-phone@2x.png');
+      url('../../img/images/background_element_home_screen_tab@2x');
   }
 }
 
@@ -37,7 +37,7 @@
     screen and (min-resolution: 2dppx) {
     .container {
       background-image: url('../../img/images/Bottle-home-screen-tab@2x.png'),
-        url('../../img/images/background-main-page-tab@2x.png');
+        url('../../img/images/background_element_home_screen_phone@2x');
     }
   }
 }
