@@ -14,7 +14,6 @@ import {
 const initialState = {
   name: '',
   email: '',
-  password: '',
   gender: '',
   waterRate: 1.5,
   avatarURL: '',
@@ -50,7 +49,6 @@ const slice = createSlice({
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
         state.name = payload.name;
         state.email = payload.email;
-        state.password = payload.password;
         state.gender = payload.gender;
         state.waterRate = payload.waterRate;
         state.avatarURL = payload.avatarURL;
@@ -75,7 +73,6 @@ const slice = createSlice({
       .addCase(updateUserThunk.fulfilled, (state, { payload }) => {
         state.name = payload.name;
         state.email = payload.email;
-        state.password = payload.password;
         state.gender = payload.gender;
         state.isRefresh = false;
         toast.success(`Data changed successfully`);
@@ -87,7 +84,6 @@ const slice = createSlice({
       .addCase(registerThunk.fulfilled, (state, { payload }) => {
         state.name = payload.name;
         state.email = payload.email;
-        state.password = payload.password;
         state.gender = payload.gender;
         state.waterRate = payload.waterRate;
         state.avatarURL = payload.avatarURL;
@@ -98,7 +94,6 @@ const slice = createSlice({
       .addCase(loginThunk.fulfilled, (state, { payload }) => {
         state.name = payload.name;
         state.email = payload.email;
-        state.password = payload.password;
         state.gender = payload.gender;
         state.waterRate = payload.waterRate;
         state.avatarURL = payload.avatarURL;
