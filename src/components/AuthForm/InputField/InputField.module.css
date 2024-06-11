@@ -6,12 +6,12 @@
   font-weight: var(--font-weight-regular);
   font-size: var(--secondary-font-size);
   line-height: 1.33333;
-  color: #2f2f2f;
+  color: var(--black-color);
 }
 
 .input {
   margin-top: 8px;
-  background: #fff;
+  background: var(--white-color);
 
   border: 1px solid #d7e3ff;
   border-radius: 6px;
@@ -23,13 +23,13 @@
   font-weight: var(--font-weight-regular);
   font-size: var(--secondary-font-size);
   line-height: 1.25;
-  color: #407bff;
+  color: var(--blue-color);
 
   transition: color 0.3s ease-in-out;
 
   &:hover {
     outline: transparent;
-    color: #407bff;
+    color: var(--blue-color);
   }
 
   &:active {

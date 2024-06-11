@@ -17,15 +17,14 @@ import {
   selectIsRefresh,
   selectToken,
 } from '../redux/auth/authSlice';
-import { MainLoader } from './MainLoader/MainLoader';
 
 const App = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const isRefreshing = useSelector(selectIsRefresh);
   const loggedIn = useSelector(selectIsLoggedIn);
-  const loading = useSelector(selectIsLoading);
   const token = useSelector(selectToken);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (token) {

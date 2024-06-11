@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { authApi, setToken, removeToken } from '../../axiosConfig/authAPI.js';
 import { fetchWaterDataMonthThunk } from '../water/operations.js';
 
@@ -20,7 +21,6 @@ export const loginThunk = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await authApi.post('auth/login', credentials);
-      console.log(data);
       setToken(data.token);
       return data;
     } catch (error) {
@@ -86,7 +86,6 @@ export const updateAvatarThunk = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         },
       });
-      console.log(response);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);

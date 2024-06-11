@@ -47,15 +47,14 @@
   align-items: center;
   background-color: transparent;
   border: none;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   font-size: 14px;
   line-height: 1.28571;
-  color: #407bff;
+  color: var(--blue-color);
 }
 
 .icon {
-  color: #407bff;
+  color: var(--blue-color);
   fill: none;
-  stroke: #407bff;
+  stroke: var(--blue-color);
 }
